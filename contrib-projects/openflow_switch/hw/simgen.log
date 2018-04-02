@@ -1,0 +1,264 @@
+
+Release 13.4 - Simulation Model Generator Xilinx EDK 13.4 Build EDK_O.87xd
+ (lin64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: simgen -p xc5vtx240tff1759-2 -lang verilog -intstyle default -lp
+/root/netfpga_10g/lib/hw/ -pe microblaze_0 bootloops/microblaze_0.elf -msg
+__xps/ise/xmsgprops.lst -s isim -tb -m behavioral -od axi_simulation/ -lp ../
+axi_simulation/system.mhs 
+
+MHS file              : /.../openflow_switch/hw/axi_simulation/system.mhs
+Language (-lang)      : Verilog 
+Flow (-flow)      : ISE 
+Simulation Model (-m) : Behavioral
+Simulator (-s)        : ISE Simulator (ISIM)
+Part (-p) [ family ]  : xc5vtx240tff1759-2 [ virtex5 ]
+External memory simulation (-external_mem_sim) : FALSE 
+
+Output directory (-od):
+/root/netfpga_10g/contrib-projects/openflow_switch/hw/axi_simulation/
+
+Library Path (-lp): /root/netfpga_10g/lib/hw/
+
+Library Path (-lp): /root/netfpga_10g/contrib-projects/openflow_switch/
+
+
+Simulation Model Generator started ...
+
+Reading MHS file ...
+lp : /root/netfpga_10g/lib/hw/
+lp : /root/netfpga_10g/contrib-projects/openflow_switch/
+
+Reading MPD definitions ...
+
+Overriding IP level properties ...
+
+INTERNAL ERROR: C_FAMILY value virtex5 not supported by axi_interconnect.
+All data-path FIFOs (if any) are implemented as LUT RAM.
+INFO:EDK - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_ENDIANNESS value to 1 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 182 
+INFO:EDK - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_ICACHE_USE_FSL value to 0 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 320 
+INFO:EDK - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_DCACHE_USE_FSL value to 0 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 343 
+
+Computing clock values...
+INFO:EDK - Frequency for Top-Level Input Clock 'CLK' is not specified. Clock
+   DRCs will not be performed for IPs connected to that clock port, unless they
+   are connected through the clock generator IP. 
+
+
+Performing IP level DRCs on properties...
+
+Running DRC Tcl procedures for OPTION IPLEVEL_DRC_PROC...
+Address Map for Processor microblaze_0
+  (0000000000-0x00003fff) microblaze_0_d_bram_ctrl	microblaze_0_dlmb
+  (0000000000-0x00003fff) microblaze_0_i_bram_ctrl	microblaze_0_ilmb
+  (0x40600000-0x4060ffff) RS232_Uart_1	axi_interconnect_0
+  (0x41a00000-0x41a0ffff) axi_timebase_wdt_0	axi_interconnect_0
+  (0x7a000000-0x7a00ffff) nf10_mdio_0	axi_interconnect_0
+  (0x7a010000-0x7a01ffff) openflow_datapath_0	axi_interconnect_0
+INFO:EDK - IPNAME: lmb_v10, INSTANCE:microblaze_0_ilmb - tool is overriding
+   PARAMETER C_LMB_NUM_SLAVES value to 1 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/lmb_v10_v1_00_a/data/lmb_v10_v2_1_0.mp
+   d line 70 
+INFO:EDK - IPNAME: lmb_v10, INSTANCE:microblaze_0_dlmb - tool is overriding
+   PARAMETER C_LMB_NUM_SLAVES value to 1 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/lmb_v10_v1_00_a/data/lmb_v10_v2_1_0.mp
+   d line 70 
+INFO:EDK - IPNAME: bram_block, INSTANCE:microblaze_0_bram_block - tool is
+   overriding PARAMETER C_MEMSIZE value to 0x4000 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/bram_block_v1_00_a/data/bram_block_v2_
+   1_0.mpd line 67 
+
+Checking platform address map ...
+
+Checking platform configuration ...
+IPNAME: axi_interconnect, INSTANCE: axi_interconnect_0 - 2 master(s) : 4
+slave(s) 
+IPNAME: lmb_v10, INSTANCE: microblaze_0_ilmb - 1 master(s) : 1 slave(s) 
+IPNAME: lmb_v10, INSTANCE: microblaze_0_dlmb - 1 master(s) : 1 slave(s) 
+
+Checking port drivers...
+WARNING:EDK - PORT: EXT_BRK, CONNECTOR: Ext_BRK - No driver found. Port will be
+   driven to GND -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 378 
+WARNING:EDK - PORT: EXT_NM_BRK, CONNECTOR: Ext_NM_BRK - No driver found. Port
+   will be driven to GND -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 379 
+WARNING:EDK - PORT: IWAIT, CONNECTOR: microblaze_0_ilmb_LMB_Wait - No driver
+   found. Port will be driven to GND -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 385 
+WARNING:EDK - PORT: ICE, CONNECTOR: microblaze_0_ilmb_LMB_CE - No driver found.
+   Port will be driven to GND -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 386 
+WARNING:EDK - PORT: IUE, CONNECTOR: microblaze_0_ilmb_LMB_UE - No driver found.
+   Port will be driven to GND -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 387 
+WARNING:EDK - PORT: DWAIT, CONNECTOR: microblaze_0_dlmb_LMB_Wait - No driver
+   found. Port will be driven to GND -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 423 
+WARNING:EDK - PORT: DCE, CONNECTOR: microblaze_0_dlmb_LMB_CE - No driver found.
+   Port will be driven to GND -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 424 
+WARNING:EDK - PORT: DUE, CONNECTOR: microblaze_0_dlmb_LMB_UE - No driver found.
+   Port will be driven to GND -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 425 
+WARNING:EDK - PORT: SINGLE_ENDED_INPUT, CONNECTOR: refclk_A - floating
+   connection -
+   /root/netfpga_10g/contrib-projects/openflow_switch/hw/axi_simulation/system.m
+   hs line 144 
+WARNING:EDK - PORT: SINGLE_ENDED_INPUT, CONNECTOR: refclk_B - floating
+   connection -
+   /root/netfpga_10g/contrib-projects/openflow_switch/hw/axi_simulation/system.m
+   hs line 152 
+WARNING:EDK - PORT: SINGLE_ENDED_INPUT, CONNECTOR: refclk_C - floating
+   connection -
+   /root/netfpga_10g/contrib-projects/openflow_switch/hw/axi_simulation/system.m
+   hs line 160 
+WARNING:EDK - PORT: SINGLE_ENDED_INPUT, CONNECTOR: refclk_D - floating
+   connection -
+   /root/netfpga_10g/contrib-projects/openflow_switch/hw/axi_simulation/system.m
+   hs line 168 
+
+Performing Clock DRCs...
+
+Performing Reset DRCs...
+
+Overriding system level properties...
+
+INFO: Setting C_RANGE_CHECK = ON for axi_interconnect axi_interconnect_0.
+INFO:EDK - IPNAME: axi_interconnect, INSTANCE:axi_interconnect_0 - tcl is
+   overriding PARAMETER C_RANGE_CHECK value to 1 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/axi_interconnect_v1_02_a/data/axi_inte
+   rconnect_v2_1_0.mpd line 137 
+INFO:EDK - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_D_AXI value to 1 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 215 
+INFO:EDK - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_ADDR_TAG_BITS value to 0 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 318 
+INFO:EDK - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_DCACHE_ADDR_TAG value to 0 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 341 
+INFO:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE:microblaze_0_i_bram_ctrl - tcl is
+   overriding PARAMETER C_MASK value to 0x40000000 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/lmb_bram_if_cntlr_v2_10_b/data/lmb_bra
+   m_if_cntlr_v2_1_0.mpd line 75 
+INFO:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE:microblaze_0_d_bram_ctrl - tcl is
+   overriding PARAMETER C_MASK value to 0x40000000 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/lmb_bram_if_cntlr_v2_10_b/data/lmb_bra
+   m_if_cntlr_v2_1_0.mpd line 75 
+
+Running system level update procedures...
+
+Running UPDATE Tcl procedures for OPTION SYSLEVEL_UPDATE_PROC...
+
+Running system level DRCs...
+
+Performing System level DRCs on properties...
+
+Running DRC Tcl procedures for OPTION SYSLEVEL_DRC_PROC...
+Port present in nf10_mdio_0
+
+Running UPDATE Tcl procedures for OPTION SIMGEN_SYSLEVEL_UPDATE_PROC...
+
+Elaborating instances ...
+IPNAME:bram_block INSTANCE:microblaze_0_bram_block -
+/root/netfpga_10g/contrib-projects/openflow_switch/hw/axi_simulation/system.mhs
+line 87 - elaborating IP
+IPNAME:clock_generator INSTANCE:clock_generator_0 -
+/root/netfpga_10g/contrib-projects/openflow_switch/hw/axi_simulation/system.mhs
+line 123 - elaborating IP
+ClkGen elaborate status: PASSED
+----------------------------------------
+
+Generating simulation files ...
+
+Writing HDL for elaborated instances ...
+
+Inserting wrapper level ...
+
+Constructing platform-level signal connectivity ...
+
+Writing HDL ...
+
+Writing BMM ...
+
+Writing memory initialization files ...
+
+Generating Memory Initialization Files ...
+
+Overriding IP level properties ...
+
+INTERNAL ERROR: C_FAMILY value virtex5 not supported by axi_interconnect.
+All data-path FIFOs (if any) are implemented as LUT RAM.
+INFO:EDK - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_ENDIANNESS value to 1 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 182 
+INFO:EDK - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_ICACHE_USE_FSL value to 0 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 320 
+INFO:EDK - IPNAME: microblaze, INSTANCE:microblaze_0 - tcl is overriding
+   PARAMETER C_DCACHE_USE_FSL value to 0 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_
+   1_0.mpd line 343 
+
+Computing clock values...
+INFO:EDK - Frequency for Top-Level Input Clock 'CLK' is not specified. Clock
+   DRCs will not be performed for IPs connected to that clock port, unless they
+   are connected through the clock generator IP. 
+
+Address Map for Processor microblaze_0
+  (0000000000-0x00003fff) microblaze_0_d_bram_ctrl	microblaze_0_dlmb
+  (0000000000-0x00003fff) microblaze_0_i_bram_ctrl	microblaze_0_ilmb
+  (0x40600000-0x4060ffff) RS232_Uart_1	axi_interconnect_0
+  (0x41a00000-0x41a0ffff) axi_timebase_wdt_0	axi_interconnect_0
+  (0x7a000000-0x7a00ffff) nf10_mdio_0	axi_interconnect_0
+  (0x7a010000-0x7a01ffff) openflow_datapath_0	axi_interconnect_0
+INFO:EDK - IPNAME: lmb_v10, INSTANCE:microblaze_0_ilmb - tool is overriding
+   PARAMETER C_LMB_NUM_SLAVES value to 1 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/lmb_v10_v1_00_a/data/lmb_v10_v2_1_0.mp
+   d line 70 
+INFO:EDK - IPNAME: lmb_v10, INSTANCE:microblaze_0_dlmb - tool is overriding
+   PARAMETER C_LMB_NUM_SLAVES value to 1 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/lmb_v10_v1_00_a/data/lmb_v10_v2_1_0.mp
+   d line 70 
+INFO:EDK - IPNAME: bram_block, INSTANCE:microblaze_0_bram_block - tool is
+   overriding PARAMETER C_MEMSIZE value to 0x4000 -
+   /root/netfpga_10g/lib/hw/xilinx/pcores/bram_block_v1_00_a/data/bram_block_v2_
+   1_0.mpd line 67 
+
+Checking platform address map ...
+Running Data2Mem with the following command:
+data2mem -bm system_sim.bmm  -bd
+/root/netfpga_10g/contrib-projects/openflow_switch/hw/bootloops/microblaze_0.elf
+tag microblaze_0  -bx
+/root/netfpga_10g/contrib-projects/openflow_switch/hw/axi_simulation/simulation/
+behavioral -u   -p xc5vtx240tff1759-2 
+
+Generating simulator compile script ...
+
+Generating simulator helper scripts ...
+Simulation Model Generator done!
+

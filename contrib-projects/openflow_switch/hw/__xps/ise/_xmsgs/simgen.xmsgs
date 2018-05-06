@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">microblaze</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0</arg> - <arg fmt="%s" index="3">tcl</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_ENDIANNESS</arg> value to <arg fmt="%s" index="6">1</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 182</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">microblaze</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0</arg> - <arg fmt="%s" index="3">tcl</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_ICACHE_USE_FSL</arg> value to <arg fmt="%s" index="6">0</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 320</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">microblaze</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0</arg> - <arg fmt="%s" index="3">tcl</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_DCACHE_USE_FSL</arg> value to <arg fmt="%s" index="6">0</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 343</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >Frequency for Top-Level Input Clock &apos;<arg fmt="%s" index="1">CLK</arg>&apos; is not specified. Clock DRCs will not be performed for IPs connected to that clock port, unless they are connected through the clock generator IP. 
+
+</msg>
+
+<msg type="error" file="EDK" num="0" delta="new" >
+Unknown Tcl procedure <arg fmt="%s" index="1">::hw_lmb_bram_if_cntlr_v2_10_b::check_iplevel_settings</arg> called
+</msg>
+
+<msg type="error" file="EDK" num="0" delta="new" ><arg fmt="%s" index="1">microblaze_0_i_bram_ctrl (lmb_bram_if_cntlr) -</arg> <arg fmt="%s" index="2"></arg> <arg fmt="%s" index="3"></arg>
+</msg>
+
+<msg type="error" file="EDK" num="0" delta="new" >
+Unknown Tcl procedure <arg fmt="%s" index="1">::hw_lmb_bram_if_cntlr_v2_10_b::check_iplevel_settings</arg> called
+</msg>
+
+<msg type="error" file="EDK" num="0" delta="new" ><arg fmt="%s" index="1">microblaze_0_d_bram_ctrl (lmb_bram_if_cntlr) -</arg> <arg fmt="%s" index="2"></arg> <arg fmt="%s" index="3"></arg>
+</msg>
+
+<msg type="error" file="EDK" num="0" delta="new" >
+Unknown Tcl procedure <arg fmt="%s" index="1">::hw_proc_sys_reset_v3_00_a::check_iplevel_settings</arg> called
+</msg>
+
+<msg type="error" file="EDK" num="0" delta="new" ><arg fmt="%s" index="1">reset_0 (proc_sys_reset) -</arg> <arg fmt="%s" index="2"></arg> <arg fmt="%s" index="3"></arg>
+</msg>
+
+<msg type="error" file="EDK" num="0" delta="new" >
+Unknown Tcl procedure <arg fmt="%s" index="1">::hw_clock_generator_v4_01_a::clkgen_drc</arg> called
+</msg>
+
+<msg type="error" file="EDK" num="0" delta="new" ><arg fmt="%s" index="1">clock_generator_0 (clock_generator) -</arg> <arg fmt="%s" index="2"></arg> <arg fmt="%s" index="3"></arg>
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">lmb_v10</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0_ilmb</arg> - <arg fmt="%s" index="3">tool</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_LMB_NUM_SLAVES</arg> value to <arg fmt="%s" index="6">1</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/lmb_v10_v1_00_a/data/lmb_v10_v2_1_0.mpd line 70</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">lmb_v10</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0_dlmb</arg> - <arg fmt="%s" index="3">tool</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_LMB_NUM_SLAVES</arg> value to <arg fmt="%s" index="6">1</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/lmb_v10_v1_00_a/data/lmb_v10_v2_1_0.mpd line 70</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">bram_block</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0_bram_block</arg> - <arg fmt="%s" index="3">tool</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_MEMSIZE</arg> value to <arg fmt="%s" index="6">0x4000</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/bram_block_v1_00_a/data/bram_block_v2_1_0.mpd line 67</arg> 
+</msg>
+
+</messages>
+

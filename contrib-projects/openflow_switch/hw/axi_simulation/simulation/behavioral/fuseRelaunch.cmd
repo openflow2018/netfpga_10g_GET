@@ -1,1 +1,0 @@
--incremental "work.system_tb" "work.glbl" -prj "system.prj" -L "xilinxcorelib_ver" -L "secureip" -L "unisims_ver" -o "isim_system" 

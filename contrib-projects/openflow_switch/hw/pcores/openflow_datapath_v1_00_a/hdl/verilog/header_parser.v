@@ -148,6 +148,12 @@ module header_parser
               IP_TP_PARSE_MORE = 8,
               IP_TP_WAIT_DONE = 16;
 
+   // GET Filter state machine
+   localparam NUM_GET_FILTER_STATE = 4;
+   localparam GET_FILTER_START = 1,
+              GET_FILTER_WORD_7 = 2,
+              GET_FILTER_WORD_8 = 4,
+              GET_FILTER_WORD_9 = 8;
    //------------------------ Wires/Regs -----------------------------
 
    // Endian Conversion
@@ -209,6 +215,12 @@ module header_parser
    reg [15:0] tp_dst_nxt;
    reg ip_tp_done_nxt;
    reg [NUM_IP_TP_STATES-1:0] ip_state, ip_state_nxt;
+
+   // GET packet filter
+   reg is_GET_pkt, is_GET_pkt_nxt;
+   reg get_f_start, get_f_start_nxt;
+   reg [NUM_GET_FILTER_STATE-1:0] get_state, get_state_nxt;
+
 
    //--------------------------- Logic -------------------------------
 
@@ -624,6 +636,8 @@ module header_parser
       ip_state_nxt = ip_state;
       ip_tp_done_nxt = 0;
 
+      get_f_start_nxt = 0;
+
       case (ip_state)
          IP_TP_WAIT_START: begin
             if (ip_start) begin
@@ -684,6 +698,10 @@ module header_parser
                      end
                   endcase
                   ip_state_nxt = IP_TP_WAIT_DONE;
+                  //-- start GET Filter Machine
+                  if(dl_tdata[15:0] == 80) begin
+                     get_f_start_nxt = 1;
+                  end
                end
                else begin
                   ip_hlen_nxt = ip_hlen - 2;
@@ -760,6 +778,8 @@ module header_parser
          tp_dst <= 0;
          ip_state <= IP_TP_WAIT_START;
          ip_tp_done <= 0;
+
+         get_f_start <= 0;
       end
       else begin
          ip_hlen <= ip_hlen_nxt;
@@ -773,6 +793,8 @@ module header_parser
          tp_dst <= tp_dst_nxt;
          ip_state <= ip_state_nxt;
          ip_tp_done <= ip_tp_done_nxt;
+
+         get_f_start <= get_f_start_nxt;
       end
    end
 
@@ -799,6 +821,50 @@ module header_parser
             ip_tp_parse_cnt <= ip_tp_parse_cnt + 1;
          end
       end
+   end
+
+// -- GET packet filter
+   
+   always @(posedge asclk) begin
+      if (~aresetn) begin
+         is_GET_pkt <= 0;
+         get_state <= GET_FILTER_START;     
+      end
+      else begin
+         is_GET_pkt <= is_GET_pkt_nxt;
+         get_state <= get_state_nxt;
+      end
+   end
+
+   always @(*) begin
+      get_state_nxt = get_state; 
+      is_GET_pkt_nxt = 0;   
+
+      case (get_state)
+         GET_FILTER_START: begin
+            if (get_f_start) begin
+               get_state_nxt = GET_FILTER_WORD_7;
+            end            
+         end
+         GET_FILTER_WORD_7: begin
+            if (be_tx_data [15:0] == "GE") begin
+               is_GET_pkt_nxt = 1;
+               get_state_nxt = GET_FILTER_START;
+            end
+            else begin
+               get_state_nxt = GET_FILTER_WORD_8;
+            end
+         end
+         GET_FILTER_WORD_8: begin
+            get_state_nxt = GET_FILTER_WORD_9;
+         end
+         GET_FILTER_WORD_9: begin
+            if (be_tx_data [47:24] == "GET") begin
+               is_GET_pkt_nxt = 1;
+            end
+            get_state_nxt = GET_FILTER_START;
+         end
+
    end
 
 endmodule

@@ -141,16 +141,12 @@ module header_parser
               ARP_WAIT_PARSE_DONE = 16;
 
    // IP_TP_and_above State Machine
-   localparam NUM_IP_TP_STATES = 8;
+   localparam NUM_IP_TP_STATES = 5;
    localparam IP_TP_WAIT_START = 1,
               IP_TP_PARSE_2ND = 2,
               IP_TP_PARSE_3RD = 4,
-              IP_WORD_6       = 8,
-              IP_WORD_7       = 16,
-              IP_WORD_8       = 32,
-              IP_WORD_9       = 64,
-              IP_TP_PARSE_MORE = 128,
-              IP_TP_WAIT_DONE = 256;
+              IP_TP_PARSE_MORE = 8,
+              IP_TP_WAIT_DONE = 16;
 
    //------------------------ Wires/Regs -----------------------------
 
@@ -213,10 +209,6 @@ module header_parser
    reg [15:0] tp_dst_nxt;
    reg ip_tp_done_nxt;
    reg [NUM_IP_TP_STATES-1:0] ip_state, ip_state_nxt;
-
-   // ---
-
-   reg is_GET_pkt, is_GET_pkt_nxt;
 
    //--------------------------- Logic -------------------------------
 
@@ -632,10 +624,8 @@ module header_parser
       ip_state_nxt = ip_state;
       ip_tp_done_nxt = 0;
 
-      is_GET_pkt_nxt = 0;
-
       case (ip_state)
-         IP_TP_WAIT_START: begin //WORD 3
+         IP_TP_WAIT_START: begin
             if (ip_start) begin
                // Subtract two words (processed in this state)
                ip_hlen_nxt = dl_tdata[59:56] - 2;
@@ -647,7 +637,7 @@ module header_parser
             end
          end
 
-         IP_TP_PARSE_2ND: begin //WORD 4
+         IP_TP_PARSE_2ND: begin
             if (dl_valid) begin
                ip_hlen_nxt = ip_hlen - 2;
                ip_proto_nxt = dl_tdata[55:48];
@@ -656,7 +646,7 @@ module header_parser
             end
          end
 
-         IP_TP_PARSE_3RD: begin //WORD 5
+         IP_TP_PARSE_3RD: begin
             if (dl_valid) begin
                ip_dst_nxt = dl_tdata[63:32];
                // TP layer not parsed for fragmented packet
@@ -693,39 +683,13 @@ module header_parser
                         tp_dst_nxt = 0;
                      end
                   endcase
-                  if(dl_tdata[15:0] == 80) begin
-                     ip_state_nxt = IP_WORD_6;
-                  end
-                  else begin
-                     ip_state_nxt = IP_TP_WAIT_DONE;
-                  end
+                  ip_state_nxt = IP_TP_WAIT_DONE;
                end
                else begin
                   ip_hlen_nxt = ip_hlen - 2;
                   ip_state_nxt = IP_TP_PARSE_MORE;
                end
             end
-         end
-         IP_WORD_6: begin
-            ip_state_nxt = IP_WORD_7;
-         end
-         IP_WORD_7: begin
-            ip_state_nxt = IP_WORD_8;
-         end
-         IP_WORD_8: begin
-            if(dl_tdata[63:40] == "GET") begin
-               is_GET_pkt_nxt = 1;
-               ip_state_nxt = IP_TP_WAIT_DONE;
-            end
-            else begin
-               ip_state_nxt = IP_WORD_9;
-            end
-         end
-         IP_WORD_9: begin
-            if(dl_tdata[23:0] == "GET") begin
-               is_GET_pkt_nxt = 1;
-            end
-            ip_state_nxt = IP_TP_WAIT_DONE;
          end
 
          IP_TP_PARSE_MORE: begin
@@ -796,8 +760,6 @@ module header_parser
          tp_dst <= 0;
          ip_state <= IP_TP_WAIT_START;
          ip_tp_done <= 0;
-
-         is_GET_pkt <= 0;
       end
       else begin
          ip_hlen <= ip_hlen_nxt;
@@ -811,8 +773,6 @@ module header_parser
          tp_dst <= tp_dst_nxt;
          ip_state <= ip_state_nxt;
          ip_tp_done <= ip_tp_done_nxt;
-
-         is_GET_pkt <= is_GET_pkt_nxt;
       end
    end
 

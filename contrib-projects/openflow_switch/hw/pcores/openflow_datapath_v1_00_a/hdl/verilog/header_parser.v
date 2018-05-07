@@ -149,11 +149,10 @@ module header_parser
               IP_TP_WAIT_DONE = 16;
 
    // GET Filter state machine
-   localparam NUM_GET_FILTER_STATE = 4;
+   localparam NUM_GET_FILTER_STATE = 3;
    localparam GET_FILTER_START = 1,
-              GET_FILTER_WORD_7 = 2,
-              GET_FILTER_WORD_8 = 4,
-              GET_FILTER_WORD_9 = 8;
+              GET_FILTER_WORD_8 = 2,
+              GET_FILTER_WORD_9 = 4;
    //------------------------ Wires/Regs -----------------------------
 
    // Endian Conversion
@@ -839,21 +838,17 @@ module header_parser
    always @(*) begin
       get_state_nxt = get_state; 
       is_GET_pkt_nxt = 0;   
-
       case (get_state)
          GET_FILTER_START: begin
             if (get_f_start) begin
-               get_state_nxt = GET_FILTER_WORD_7;
+               if (be_tx_data [15:0] == "GE") begin
+                  is_GET_pkt_nxt = 1;
+                  get_state_nxt = GET_FILTER_START;
+               end
+               else begin
+                  get_state_nxt = GET_FILTER_WORD_8;
+               end
             end            
-         end
-         GET_FILTER_WORD_7: begin
-            if (be_tx_data [15:0] == "GE") begin
-               is_GET_pkt_nxt = 1;
-               get_state_nxt = GET_FILTER_START;
-            end
-            else begin
-               get_state_nxt = GET_FILTER_WORD_8;
-            end
          end
          GET_FILTER_WORD_8: begin
             get_state_nxt = GET_FILTER_WORD_9;
@@ -864,7 +859,7 @@ module header_parser
             end
             get_state_nxt = GET_FILTER_START;
          end
-
+      endcase
    end
 
 endmodule

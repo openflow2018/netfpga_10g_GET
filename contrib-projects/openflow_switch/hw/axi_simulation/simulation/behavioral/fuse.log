@@ -493,7 +493,7 @@ WARNING:HDLCompiler:1330 - "/root/netfpga_10g_GET/lib/hw/std/pcores/nf10_input_a
 WARNING:HDLCompiler:1330 - "/root/netfpga_10g_GET/lib/hw/std/pcores/nf10_bram_output_queues_v1_00_a/hdl/verilog/nf10_bram_output_queues.v" Line 103: Function log2 has no return value assignment
 WARNING:HDLCompiler:1330 - "/root/netfpga_10g_GET/lib/hw/std/pcores/nf10_axis_converter_v1_00_a/hdl/verilog/nf10_axis_converter.v" Line 83: Function log2 has no return value assignment
 Completed static elaboration
-Fuse Memory Usage: 217412 KB
+Fuse Memory Usage: 217420 KB
 Fuse CPU Usage: 11330 ms
 Compiling module axic_register_slice(C_FAMILY="rt...
 Compiling module axic_register_slice(C_FAMILY="rt...
@@ -785,6 +785,6 @@ Time Resolution for simulation is 100fs.
 Compiled 299 VHDL Units
 Compiled 161 Verilog Units
 Built simulation executable isim_system
-Fuse Memory Usage: 895072 KB
-Fuse CPU Usage: 20180 ms
-GCC CPU Usage: 270 ms
+Fuse Memory Usage: 895080 KB
+Fuse CPU Usage: 20130 ms
+GCC CPU Usage: 660 ms

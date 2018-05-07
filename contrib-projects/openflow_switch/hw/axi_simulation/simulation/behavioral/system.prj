@@ -2,7 +2,7 @@
 --  Xilinx EDK 13.4 EDK_O.87xd
 --  Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 --
---  File     system.prj (Mon May  7 12:17:54 2018)
+--  File     system.prj (Mon May  7 15:53:53 2018)
 --
 verilog axi_interconnect_v1_02_a "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/axi_interconnect_v1_02_a/hdl/verilog/axi_upsizer.v" -i "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/axi_interconnect_v1_02_a/hdl/verilog/" -i "/root/netfpga_10g_GET/lib/hw/contrib/pcores/" -i "/root/netfpga_10g_GET/lib/hw/std/pcores/" -i "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/" -i "/root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/pcores/" -i "/opt/Xilinx/13.4/ISE_DS/EDK/hw/XilinxBFMinterface/pcores/" -i "/opt/Xilinx/13.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/"
 verilog axi_interconnect_v1_02_a "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/axi_interconnect_v1_02_a/hdl/verilog/a_upsizer.v" -i "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/axi_interconnect_v1_02_a/hdl/verilog/" -i "/root/netfpga_10g_GET/lib/hw/contrib/pcores/" -i "/root/netfpga_10g_GET/lib/hw/std/pcores/" -i "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/" -i "/root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/pcores/" -i "/opt/Xilinx/13.4/ISE_DS/EDK/hw/XilinxBFMinterface/pcores/" -i "/opt/Xilinx/13.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/"

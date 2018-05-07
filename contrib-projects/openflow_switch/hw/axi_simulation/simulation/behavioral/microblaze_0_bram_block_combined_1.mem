@@ -5,7 +5,7 @@
 //
 // Command: data2mem -bm system_sim.bmm -bd "/root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/bootloops/microblaze_0.elf" tag microblaze_0 -bx "/root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/axi_simulation/simulation/behavioral" -u -p "xc5vtx240tff1759-2"
 //
-// Created on Monday May 07, 2018 - 12:17:52 pm, from:
+// Created on Monday May 07, 2018 - 03:53:50 pm, from:
 //
 //     Map file     - system_sim.bmm
 //     Data file(s) - /root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/bootloops/microblaze_0.elf

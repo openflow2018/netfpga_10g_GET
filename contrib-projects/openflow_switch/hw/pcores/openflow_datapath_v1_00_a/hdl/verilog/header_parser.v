@@ -864,7 +864,7 @@ module header_parser
             end
             get_state_nxt = GET_FILTER_START;
          end
-
+      endcase
    end
 
 endmodule

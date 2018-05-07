@@ -22,7 +22,7 @@
 #define alloca _alloca
 #endif
 extern char *IEEE_P_2592010699;
-static const char *ng1 = "/root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/hdl/vhdl/wb_mux_bit_gti.vhd";
+static const char *ng1 = "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/hdl/vhdl/wb_mux_bit_gti.vhd";
 
 unsigned char ieee_p_2592010699_sub_3488546069778340532_503743352(char *, unsigned char , unsigned char );
 unsigned char ieee_p_2592010699_sub_3488768496604610246_503743352(char *, unsigned char , unsigned char );
@@ -206,7 +206,7 @@ LAB3:    t1 = (t0 + 1880U);
     t9 = ieee_p_2592010699_sub_374109322130769762_503743352(IEEE_P_2592010699, t8);
     t1 = (t0 + 1720U);
     t10 = *((char **)t1);
-    t1 = (t0 + 7568U);
+    t1 = (t0 + 7632U);
     t11 = microblaze_v8_00_b_a_3193130893_3306564128_sub_5904135142275699633_229454594(t0, t10, t1);
     t12 = ieee_p_2592010699_sub_3488768496604610246_503743352(IEEE_P_2592010699, t9, t11);
     t13 = ieee_p_2592010699_sub_3488546069778340532_503743352(IEEE_P_2592010699, t6, t12);

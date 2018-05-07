@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/contrib-projects/openflow_switch/hw/pcores/openflow_datapath_v1_00_a/hdl/verilog/action_processor.v";
+static const char *ng0 = "/root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/pcores/openflow_datapath_v1_00_a/hdl/verilog/action_processor.v";
 static int ng1[] = {0, 0};
 static int ng2[] = {1, 0};
 static int ng3[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};

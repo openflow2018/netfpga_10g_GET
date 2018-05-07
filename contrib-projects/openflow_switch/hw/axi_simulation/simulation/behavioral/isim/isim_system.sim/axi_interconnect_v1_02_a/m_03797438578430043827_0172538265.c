@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/xilinx/pcores/axi_interconnect_v1_02_a/hdl/verilog/addr_decoder.v";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/axi_interconnect_v1_02_a/hdl/verilog/addr_decoder.v";
 static int ng1[] = {12, 0};
 static int ng2[] = {20, 0};
 static unsigned int ng3[] = {0U, 0U};

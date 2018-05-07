@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/std/pcores/nf10_axi_sim_transactor_v1_00_a/simhdl/vhdl/transactor_fifos.vhd";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/std/pcores/nf10_axi_sim_transactor_v1_00_a/simhdl/vhdl/transactor_fifos.vhd";
 extern char *IEEE_P_2592010699;
 
 unsigned char ieee_p_2592010699_sub_3488768496604610246_503743352(char *, unsigned char , unsigned char );
@@ -164,8 +164,8 @@ LAB3:    t1 = (t0 + 1352U);
     t1 = (t0 + 1512U);
     t3 = *((char **)t1);
     t5 = ((IEEE_P_2592010699) + 4000);
-    t6 = (t0 + 28200U);
-    t7 = (t0 + 28216U);
+    t6 = (t0 + 28520U);
+    t7 = (t0 + 28536U);
     t1 = xsi_base_array_concat(t1, t4, t5, (char)97, t2, t6, (char)97, t3, t7, (char)101);
     t8 = (32U + 32U);
     t9 = (64U != t8);
@@ -216,8 +216,8 @@ LAB3:    t1 = (t0 + 1672U);
     t1 = (t0 + 1512U);
     t3 = *((char **)t1);
     t5 = ((IEEE_P_2592010699) + 4000);
-    t6 = (t0 + 28232U);
-    t7 = (t0 + 28216U);
+    t6 = (t0 + 28552U);
+    t7 = (t0 + 28536U);
     t1 = xsi_base_array_concat(t1, t4, t5, (char)97, t2, t6, (char)97, t3, t7, (char)101);
     t8 = (4U + 32U);
     t9 = (36U != t8);

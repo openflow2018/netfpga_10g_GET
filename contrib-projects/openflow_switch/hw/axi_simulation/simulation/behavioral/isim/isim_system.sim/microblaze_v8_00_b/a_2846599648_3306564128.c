@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/hdl/vhdl/decode_gti.vhd";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/hdl/vhdl/decode_gti.vhd";
 extern char *MICROBLAZE_V8_00_B_P_1761634766;
 extern char *IEEE_P_2592010699;
 
@@ -4354,7 +4354,7 @@ LAB5:    t21 = (t0 + 56984U);
     t24 = (t23 * 1U);
     t25 = (0 + t24);
     t21 = (t22 + t25);
-    t26 = (t0 + 417540);
+    t26 = (t0 + 422652);
     t28 = 1;
     if (5U == 5U)
         goto LAB17;
@@ -28695,7 +28695,7 @@ LAB3:    t1 = (t0 + 246392);
 
 LAB1:    return;
 LAB2:    xsi_set_current_line(4814, ng0);
-    t1 = (t0 + 417545);
+    t1 = (t0 + 422657);
     t5 = (t0 + 275848);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
@@ -28706,7 +28706,7 @@ LAB2:    xsi_set_current_line(4814, ng0);
     goto LAB3;
 
 LAB5:    xsi_set_current_line(4816, ng0);
-    t1 = (t0 + 417550);
+    t1 = (t0 + 422662);
     t5 = (t0 + 275848);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
@@ -28717,7 +28717,7 @@ LAB5:    xsi_set_current_line(4816, ng0);
     goto LAB3;
 
 LAB7:    xsi_set_current_line(4818, ng0);
-    t1 = (t0 + 417555);
+    t1 = (t0 + 422667);
     t5 = (t0 + 275848);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);

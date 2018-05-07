@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/xilinx/pcores/proc_common_v3_00_a/hdl/vhdl/cntr_incr_decr_addn_f.vhd";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/proc_common_v3_00_a/hdl/vhdl/cntr_incr_decr_addn_f.vhd";
 extern char *IEEE_P_2592010699;
 
 unsigned char ieee_p_2592010699_sub_3488546069778340532_503743352(char *, unsigned char , unsigned char );

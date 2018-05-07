@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/contrib-projects/openflow_switch/hw/axi_simulation/simulation/behavioral/elaborate/microblaze_0_bram_block_elaborate_v1_00_a/hdl/verilog/microblaze_0_bram_block_elaborate.v";
+static const char *ng0 = "/root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/axi_simulation/simulation/behavioral/elaborate/microblaze_0_bram_block_elaborate_v1_00_a/hdl/verilog/microblaze_0_bram_block_elaborate.v";
 static unsigned int ng1[] = {1U, 0U};
 static unsigned int ng2[] = {0U, 0U};
 

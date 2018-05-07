@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/std/pcores/nf10_mdio_v1_00_a/hdl/vhdl/mdio_ipif.vhd";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/std/pcores/nf10_mdio_v1_00_a/hdl/vhdl/mdio_ipif.vhd";
 extern char *IEEE_P_2592010699;
 
 unsigned char ieee_p_2592010699_sub_3488546069778340532_503743352(char *, unsigned char , unsigned char );
@@ -2060,7 +2060,7 @@ LAB0:    xsi_set_current_line(249, ng0);
     t4 = (t3 * 1U);
     t5 = (0 + t4);
     t1 = (t2 + t5);
-    t6 = (t0 + 54692);
+    t6 = (t0 + 55348);
     t8 = 1;
     if (6U == 6U)
         goto LAB5;

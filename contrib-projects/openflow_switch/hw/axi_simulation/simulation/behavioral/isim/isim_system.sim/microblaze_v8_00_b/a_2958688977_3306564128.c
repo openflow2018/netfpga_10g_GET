@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/hdl/vhdl/daxi_interface.vhd";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/hdl/vhdl/daxi_interface.vhd";
 extern char *IEEE_P_2592010699;
 
 unsigned char ieee_p_2592010699_sub_3488546069778340532_503743352(char *, unsigned char , unsigned char );
@@ -100,7 +100,7 @@ static void microblaze_v8_00_b_a_2958688977_3306564128_p_2(char *t0)
 
 LAB0:    xsi_set_current_line(217, ng0);
 
-LAB3:    t1 = (t0 + 41085);
+LAB3:    t1 = (t0 + 41557);
     t3 = (t0 + 24392);
     t4 = (t3 + 56U);
     t5 = *((char **)t4);
@@ -126,7 +126,7 @@ static void microblaze_v8_00_b_a_2958688977_3306564128_p_3(char *t0)
 
 LAB0:    xsi_set_current_line(218, ng0);
 
-LAB3:    t1 = (t0 + 41088);
+LAB3:    t1 = (t0 + 41560);
     t3 = (t0 + 24456);
     t4 = (t3 + 56U);
     t5 = *((char **)t4);
@@ -249,7 +249,7 @@ static void microblaze_v8_00_b_a_2958688977_3306564128_p_6(char *t0)
 
 LAB0:    xsi_set_current_line(222, ng0);
 
-LAB3:    t1 = (t0 + 41090);
+LAB3:    t1 = (t0 + 41562);
     t3 = (t0 + 24648);
     t4 = (t3 + 56U);
     t5 = *((char **)t4);
@@ -275,7 +275,7 @@ static void microblaze_v8_00_b_a_2958688977_3306564128_p_7(char *t0)
 
 LAB0:    xsi_set_current_line(223, ng0);
 
-LAB3:    t1 = (t0 + 41093);
+LAB3:    t1 = (t0 + 41565);
     t3 = (t0 + 24712);
     t4 = (t3 + 56U);
     t5 = *((char **)t4);
@@ -409,7 +409,7 @@ static void microblaze_v8_00_b_a_2958688977_3306564128_p_12(char *t0)
 
 LAB0:    xsi_set_current_line(234, ng0);
 
-LAB3:    t1 = (t0 + 41097);
+LAB3:    t1 = (t0 + 41569);
     t3 = (t0 + 25032);
     t4 = (t3 + 56U);
     t5 = *((char **)t4);
@@ -435,7 +435,7 @@ static void microblaze_v8_00_b_a_2958688977_3306564128_p_13(char *t0)
 
 LAB0:    xsi_set_current_line(235, ng0);
 
-LAB3:    t1 = (t0 + 41100);
+LAB3:    t1 = (t0 + 41572);
     t3 = (t0 + 25096);
     t4 = (t3 + 56U);
     t5 = *((char **)t4);
@@ -558,7 +558,7 @@ static void microblaze_v8_00_b_a_2958688977_3306564128_p_16(char *t0)
 
 LAB0:    xsi_set_current_line(239, ng0);
 
-LAB3:    t1 = (t0 + 41102);
+LAB3:    t1 = (t0 + 41574);
     t3 = (t0 + 25288);
     t4 = (t3 + 56U);
     t5 = *((char **)t4);
@@ -584,7 +584,7 @@ static void microblaze_v8_00_b_a_2958688977_3306564128_p_17(char *t0)
 
 LAB0:    xsi_set_current_line(240, ng0);
 
-LAB3:    t1 = (t0 + 41105);
+LAB3:    t1 = (t0 + 41577);
     t3 = (t0 + 25352);
     t4 = (t3 + 56U);
     t5 = *((char **)t4);

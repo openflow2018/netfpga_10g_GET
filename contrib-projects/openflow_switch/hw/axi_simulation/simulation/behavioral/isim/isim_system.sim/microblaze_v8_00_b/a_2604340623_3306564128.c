@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/hdl/vhdl/pc_module_gti.vhd";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/hdl/vhdl/pc_module_gti.vhd";
 extern char *IEEE_P_1242562249;
 extern char *IEEE_P_2592010699;
 
@@ -330,7 +330,7 @@ LAB3:    t1 = (t0 + 35064U);
     t2 = *((char **)t1);
     t1 = (t0 + 28664U);
     t3 = *((char **)t1);
-    t1 = (t0 + 131760U);
+    t1 = (t0 + 133512U);
     t4 = ieee_p_1242562249_sub_17802405650254020620_1035706684(IEEE_P_1242562249, t3, t1);
     t5 = (t4 - 0);
     t6 = (t5 * 1);

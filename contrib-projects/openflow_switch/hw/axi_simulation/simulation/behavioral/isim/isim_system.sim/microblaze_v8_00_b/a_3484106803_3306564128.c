@@ -25,7 +25,7 @@ extern char *MICROBLAZE_V8_00_B_P_1761634766;
 extern char *STD_STANDARD;
 static const char *ng2 = "Function b2std ended without a return statement";
 extern char *IEEE_P_2592010699;
-static const char *ng4 = "/root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/hdl/vhdl/wb_mux_gti.vhd";
+static const char *ng4 = "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/hdl/vhdl/wb_mux_gti.vhd";
 
 unsigned char ieee_p_2592010699_sub_3488546069778340532_503743352(char *, unsigned char , unsigned char );
 

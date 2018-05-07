@@ -23,7 +23,7 @@
 #endif
 static const char *ng0 = "Function uppercase_char ended without a return statement";
 extern char *STD_STANDARD;
-static const char *ng2 = "/root/netfpga_10g/contrib-projects/openflow_switch/hw/axi_simulation/simulation/behavioral/elaborate/clock_generator_0_v4_01_a/hdl/vhdl/clock_generator.vhd";
+static const char *ng2 = "/root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/axi_simulation/simulation/behavioral/elaborate/clock_generator_0_v4_01_a/hdl/vhdl/clock_generator.vhd";
 
 
 
@@ -655,7 +655,7 @@ static void clock_generator_0_v4_01_a_a_2009313575_0632001823_p_1(char *t0)
 
 LAB0:    xsi_set_current_line(261, ng2);
 
-LAB3:    t1 = (t0 + 31018);
+LAB3:    t1 = (t0 + 31330);
     t3 = (1U != 1U);
     if (t3 == 1)
         goto LAB5;
@@ -689,7 +689,7 @@ static void clock_generator_0_v4_01_a_a_2009313575_0632001823_p_2(char *t0)
 
 LAB0:    xsi_set_current_line(262, ng2);
 
-LAB3:    t1 = (t0 + 31019);
+LAB3:    t1 = (t0 + 31331);
     t3 = (16U != 16U);
     if (t3 == 1)
         goto LAB5;

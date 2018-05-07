@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/xilinx/pcores/proc_sys_reset_v3_00_a/hdl/vhdl/upcnt_n.vhd";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/proc_sys_reset_v3_00_a/hdl/vhdl/upcnt_n.vhd";
 extern char *IEEE_P_3499444699;
 
 char *ieee_p_3499444699_sub_1205625289178583237_3536714472(char *, char *, char *, char *, int );
@@ -131,7 +131,7 @@ LAB11:    xsi_set_current_line(142, ng0);
 LAB13:    xsi_set_current_line(145, ng0);
     t2 = (t0 + 1992U);
     t5 = *((char **)t2);
-    t2 = (t0 + 6528U);
+    t2 = (t0 + 6584U);
     t8 = ieee_p_3499444699_sub_1205625289178583237_3536714472(IEEE_P_3499444699, t19, t5, t2, 1);
     t10 = (t19 + 12U);
     t20 = *((unsigned int *)t10);

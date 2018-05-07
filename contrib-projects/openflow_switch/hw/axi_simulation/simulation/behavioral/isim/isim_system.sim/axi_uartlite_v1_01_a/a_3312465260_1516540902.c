@@ -24,7 +24,7 @@
 extern char *STD_STANDARD;
 static const char *ng1 = "rem 0 asked for.  Divide by zero error.";
 static const char *ng2 = "Function calc_ratio ended without a return statement";
-static const char *ng3 = "/root/netfpga_10g/lib/hw/xilinx/pcores/axi_uartlite_v1_01_a/hdl/vhdl/uartlite_core.vhd";
+static const char *ng3 = "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/axi_uartlite_v1_01_a/hdl/vhdl/uartlite_core.vhd";
 extern char *IEEE_P_2592010699;
 
 unsigned char ieee_p_2592010699_sub_3488546069778340532_503743352(char *, unsigned char , unsigned char );

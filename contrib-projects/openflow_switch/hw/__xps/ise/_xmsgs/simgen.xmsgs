@@ -18,32 +18,80 @@
 
 </msg>
 
-<msg type="error" file="EDK" num="0" delta="new" >
-Unknown Tcl procedure <arg fmt="%s" index="1">::hw_lmb_bram_if_cntlr_v2_10_b::check_iplevel_settings</arg> called
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">lmb_v10</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0_ilmb</arg> - <arg fmt="%s" index="3">tool</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_LMB_NUM_SLAVES</arg> value to <arg fmt="%s" index="6">1</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/lmb_v10_v1_00_a/data/lmb_v10_v2_1_0.mpd line 70</arg> 
 </msg>
 
-<msg type="error" file="EDK" num="0" delta="new" ><arg fmt="%s" index="1">microblaze_0_i_bram_ctrl (lmb_bram_if_cntlr) -</arg> <arg fmt="%s" index="2"></arg> <arg fmt="%s" index="3"></arg>
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">lmb_v10</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0_dlmb</arg> - <arg fmt="%s" index="3">tool</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_LMB_NUM_SLAVES</arg> value to <arg fmt="%s" index="6">1</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/lmb_v10_v1_00_a/data/lmb_v10_v2_1_0.mpd line 70</arg> 
 </msg>
 
-<msg type="error" file="EDK" num="0" delta="new" >
-Unknown Tcl procedure <arg fmt="%s" index="1">::hw_lmb_bram_if_cntlr_v2_10_b::check_iplevel_settings</arg> called
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">bram_block</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0_bram_block</arg> - <arg fmt="%s" index="3">tool</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_MEMSIZE</arg> value to <arg fmt="%s" index="6">0x4000</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/bram_block_v1_00_a/data/bram_block_v2_1_0.mpd line 67</arg> 
 </msg>
 
-<msg type="error" file="EDK" num="0" delta="new" ><arg fmt="%s" index="1">microblaze_0_d_bram_ctrl (lmb_bram_if_cntlr) -</arg> <arg fmt="%s" index="2"></arg> <arg fmt="%s" index="3"></arg>
+<msg type="warning" file="EDK" num="0" delta="new" >PORT: <arg fmt="%s" index="1">EXT_BRK</arg>, CONNECTOR: <arg fmt="%s" index="2">Ext_BRK</arg> - No driver found. Port will be driven to <arg fmt="%s" index="3">GND</arg> - <arg fmt="%s" index="4">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 378</arg> 
 </msg>
 
-<msg type="error" file="EDK" num="0" delta="new" >
-Unknown Tcl procedure <arg fmt="%s" index="1">::hw_proc_sys_reset_v3_00_a::check_iplevel_settings</arg> called
+<msg type="warning" file="EDK" num="0" delta="new" >PORT: <arg fmt="%s" index="1">EXT_NM_BRK</arg>, CONNECTOR: <arg fmt="%s" index="2">Ext_NM_BRK</arg> - No driver found. Port will be driven to <arg fmt="%s" index="3">GND</arg> - <arg fmt="%s" index="4">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 379</arg> 
 </msg>
 
-<msg type="error" file="EDK" num="0" delta="new" ><arg fmt="%s" index="1">reset_0 (proc_sys_reset) -</arg> <arg fmt="%s" index="2"></arg> <arg fmt="%s" index="3"></arg>
+<msg type="warning" file="EDK" num="0" delta="new" >PORT: <arg fmt="%s" index="1">IWAIT</arg>, CONNECTOR: <arg fmt="%s" index="2">microblaze_0_ilmb_LMB_Wait</arg> - No driver found. Port will be driven to <arg fmt="%s" index="3">GND</arg> - <arg fmt="%s" index="4">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 385</arg> 
 </msg>
 
-<msg type="error" file="EDK" num="0" delta="new" >
-Unknown Tcl procedure <arg fmt="%s" index="1">::hw_clock_generator_v4_01_a::clkgen_drc</arg> called
+<msg type="warning" file="EDK" num="0" delta="new" >PORT: <arg fmt="%s" index="1">ICE</arg>, CONNECTOR: <arg fmt="%s" index="2">microblaze_0_ilmb_LMB_CE</arg> - No driver found. Port will be driven to <arg fmt="%s" index="3">GND</arg> - <arg fmt="%s" index="4">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 386</arg> 
 </msg>
 
-<msg type="error" file="EDK" num="0" delta="new" ><arg fmt="%s" index="1">clock_generator_0 (clock_generator) -</arg> <arg fmt="%s" index="2"></arg> <arg fmt="%s" index="3"></arg>
+<msg type="warning" file="EDK" num="0" delta="new" >PORT: <arg fmt="%s" index="1">IUE</arg>, CONNECTOR: <arg fmt="%s" index="2">microblaze_0_ilmb_LMB_UE</arg> - No driver found. Port will be driven to <arg fmt="%s" index="3">GND</arg> - <arg fmt="%s" index="4">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 387</arg> 
+</msg>
+
+<msg type="warning" file="EDK" num="0" delta="new" >PORT: <arg fmt="%s" index="1">DWAIT</arg>, CONNECTOR: <arg fmt="%s" index="2">microblaze_0_dlmb_LMB_Wait</arg> - No driver found. Port will be driven to <arg fmt="%s" index="3">GND</arg> - <arg fmt="%s" index="4">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 423</arg> 
+</msg>
+
+<msg type="warning" file="EDK" num="0" delta="new" >PORT: <arg fmt="%s" index="1">DCE</arg>, CONNECTOR: <arg fmt="%s" index="2">microblaze_0_dlmb_LMB_CE</arg> - No driver found. Port will be driven to <arg fmt="%s" index="3">GND</arg> - <arg fmt="%s" index="4">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 424</arg> 
+</msg>
+
+<msg type="warning" file="EDK" num="0" delta="new" >PORT: <arg fmt="%s" index="1">DUE</arg>, CONNECTOR: <arg fmt="%s" index="2">microblaze_0_dlmb_LMB_UE</arg> - No driver found. Port will be driven to <arg fmt="%s" index="3">GND</arg> - <arg fmt="%s" index="4">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 425</arg> 
+</msg>
+
+<msg type="warning" file="EDK" num="0" delta="new" >PORT: <arg fmt="%s" index="1">SINGLE_ENDED_INPUT</arg>, CONNECTOR: <arg fmt="%s" index="2">refclk_A</arg> - floating connection - <arg fmt="%s" index="3">/root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/axi_simulation/system.mhs line 144</arg> 
+</msg>
+
+<msg type="warning" file="EDK" num="0" delta="new" >PORT: <arg fmt="%s" index="1">SINGLE_ENDED_INPUT</arg>, CONNECTOR: <arg fmt="%s" index="2">refclk_B</arg> - floating connection - <arg fmt="%s" index="3">/root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/axi_simulation/system.mhs line 152</arg> 
+</msg>
+
+<msg type="warning" file="EDK" num="0" delta="new" >PORT: <arg fmt="%s" index="1">SINGLE_ENDED_INPUT</arg>, CONNECTOR: <arg fmt="%s" index="2">refclk_C</arg> - floating connection - <arg fmt="%s" index="3">/root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/axi_simulation/system.mhs line 160</arg> 
+</msg>
+
+<msg type="warning" file="EDK" num="0" delta="new" >PORT: <arg fmt="%s" index="1">SINGLE_ENDED_INPUT</arg>, CONNECTOR: <arg fmt="%s" index="2">refclk_D</arg> - floating connection - <arg fmt="%s" index="3">/root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/axi_simulation/system.mhs line 168</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">axi_interconnect</arg>, INSTANCE:<arg fmt="%s" index="2">axi_interconnect_0</arg> - <arg fmt="%s" index="3">tcl</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_RANGE_CHECK</arg> value to <arg fmt="%s" index="6">1</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/axi_interconnect_v1_02_a/data/axi_interconnect_v2_1_0.mpd line 137</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">microblaze</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0</arg> - <arg fmt="%s" index="3">tcl</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_D_AXI</arg> value to <arg fmt="%s" index="6">1</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 215</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">microblaze</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0</arg> - <arg fmt="%s" index="3">tcl</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_ADDR_TAG_BITS</arg> value to <arg fmt="%s" index="6">0</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 318</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">microblaze</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0</arg> - <arg fmt="%s" index="3">tcl</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_DCACHE_ADDR_TAG</arg> value to <arg fmt="%s" index="6">0</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 341</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">lmb_bram_if_cntlr</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0_i_bram_ctrl</arg> - <arg fmt="%s" index="3">tcl</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_MASK</arg> value to <arg fmt="%s" index="6">0x40000000</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/lmb_bram_if_cntlr_v2_10_b/data/lmb_bram_if_cntlr_v2_1_0.mpd line 75</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">lmb_bram_if_cntlr</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0_d_bram_ctrl</arg> - <arg fmt="%s" index="3">tcl</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_MASK</arg> value to <arg fmt="%s" index="6">0x40000000</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/lmb_bram_if_cntlr_v2_10_b/data/lmb_bram_if_cntlr_v2_1_0.mpd line 75</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">microblaze</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0</arg> - <arg fmt="%s" index="3">tcl</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_ENDIANNESS</arg> value to <arg fmt="%s" index="6">1</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 182</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">microblaze</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0</arg> - <arg fmt="%s" index="3">tcl</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_ICACHE_USE_FSL</arg> value to <arg fmt="%s" index="6">0</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 320</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">microblaze</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0</arg> - <arg fmt="%s" index="3">tcl</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_DCACHE_USE_FSL</arg> value to <arg fmt="%s" index="6">0</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/data/microblaze_v2_1_0.mpd line 343</arg> 
+</msg>
+
+<msg type="info" file="EDK" num="0" delta="new" >Frequency for Top-Level Input Clock &apos;<arg fmt="%s" index="1">CLK</arg>&apos; is not specified. Clock DRCs will not be performed for IPs connected to that clock port, unless they are connected through the clock generator IP. 
+
 </msg>
 
 <msg type="info" file="EDK" num="0" delta="new" >IPNAME: <arg fmt="%s" index="1">lmb_v10</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0_ilmb</arg> - <arg fmt="%s" index="3">tool</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_LMB_NUM_SLAVES</arg> value to <arg fmt="%s" index="6">1</arg> - <arg fmt="%s" index="7">/root/netfpga_10g_GET/lib/hw/xilinx/pcores/lmb_v10_v1_00_a/data/lmb_v10_v2_1_0.mpd line 70</arg> 

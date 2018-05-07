@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/contrib-projects/openflow_switch/hw/pcores/openflow_datapath_v1_00_a/hdl/verilog/cam.v";
+static const char *ng0 = "/root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/pcores/openflow_datapath_v1_00_a/hdl/verilog/cam.v";
 
 
 

@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/std/pcores/nf10_mdio_v1_00_a/hdl/vhdl/nf10_mdio.vhd";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/std/pcores/nf10_mdio_v1_00_a/hdl/vhdl/nf10_mdio.vhd";
 extern char *IEEE_P_2592010699;
 
 unsigned char ieee_p_2592010699_sub_374109322130769762_503743352(char *, unsigned char );

@@ -22,7 +22,7 @@
 #define alloca _alloca
 #endif
 extern char *IEEE_P_2592010699;
-static const char *ng1 = "/root/netfpga_10g/lib/hw/xilinx/pcores/axi_timebase_wdt_v1_01_a/hdl/vhdl/axi_timebase_wdt.vhd";
+static const char *ng1 = "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/axi_timebase_wdt_v1_01_a/hdl/vhdl/axi_timebase_wdt.vhd";
 
 unsigned char ieee_p_2592010699_sub_3488768496604610246_503743352(char *, unsigned char , unsigned char );
 unsigned char ieee_p_2592010699_sub_374109322130769762_503743352(char *, unsigned char );
@@ -169,7 +169,7 @@ LAB3:    t1 = (t0 + 6312U);
     t7 = *((unsigned char *)t1);
     t8 = (t0 + 6152U);
     t9 = *((char **)t8);
-    t8 = (t0 + 18944U);
+    t8 = (t0 + 19168U);
     t10 = axi_timebase_wdt_v1_01_a_a_1611467215_3306564128_sub_9199544104377530232_229454594(t0, t9, t8);
     t11 = ieee_p_2592010699_sub_374109322130769762_503743352(IEEE_P_2592010699, t10);
     t12 = ieee_p_2592010699_sub_3488768496604610246_503743352(IEEE_P_2592010699, t7, t11);

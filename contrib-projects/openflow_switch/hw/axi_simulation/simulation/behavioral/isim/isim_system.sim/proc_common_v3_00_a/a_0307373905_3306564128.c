@@ -23,7 +23,7 @@
 #endif
 extern char *IEEE_P_1242562249;
 extern char *IEEE_P_2592010699;
-static const char *ng2 = "/root/netfpga_10g/lib/hw/xilinx/pcores/proc_common_v3_00_a/hdl/vhdl/cntr_incr_decr_addn_f.vhd";
+static const char *ng2 = "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/proc_common_v3_00_a/hdl/vhdl/cntr_incr_decr_addn_f.vhd";
 
 char *ieee_p_1242562249_sub_1701011461141717515_1035706684(char *, char *, char *, char *, char *, char *);
 unsigned char ieee_p_2592010699_sub_3488546069778340532_503743352(char *, unsigned char , unsigned char );
@@ -331,10 +331,10 @@ static void proc_common_v3_00_a_a_0307373905_3306564128_p_0(char *t0)
 LAB0:    xsi_set_current_line(261, ng2);
     t3 = (t0 + 2416U);
     t4 = *((char **)t3);
-    t3 = (t0 + 8776U);
+    t3 = (t0 + 8848U);
     t6 = (t0 + 1936U);
     t7 = *((char **)t6);
-    t6 = (t0 + 8728U);
+    t6 = (t0 + 8800U);
     t8 = (t0 + 1776U);
     t9 = *((char **)t8);
     t10 = *((unsigned char *)t9);

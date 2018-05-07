@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/std/pcores/nf10_axis_sim_record_v1_00_a/simhdl/verilog/nf10_axis_sim_record.v";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/std/pcores/nf10_axis_sim_record_v1_00_a/simhdl/verilog/nf10_axis_sim_record.v";
 static int ng1[] = {1, 0};
 static const char *ng2 = "../../stream_data_out_2.axi";
 static const char *ng3 = "w";

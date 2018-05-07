@@ -36,7 +36,7 @@ f0 = open("stream_data_in_0.axi", "w")
 for i in range(0, 10):
     pkt = (Ether(src='f0:0d:f0:0d:f0:0d', dst='ba:be:ba:be:ba:be')/
            IP(src='204.204.204.204', dst='221.221.221.221')/
-           TCP(sport=51996, dport=51996)/
+           TCP(sport=51996, dport=80)/
            "GET /newyorker.com")
     pkt.time = i*(1e-8)
     pkts.append(pkt)

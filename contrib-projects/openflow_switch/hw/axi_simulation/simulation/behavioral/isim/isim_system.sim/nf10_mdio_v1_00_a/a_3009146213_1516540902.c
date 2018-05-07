@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/std/pcores/nf10_mdio_v1_00_a/hdl/vhdl/axi_interface.vhd";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/std/pcores/nf10_mdio_v1_00_a/hdl/vhdl/axi_interface.vhd";
 extern char *IEEE_P_2592010699;
 extern char *IEEE_P_0017514958;
 extern char *IEEE_P_3620187407;
@@ -141,7 +141,7 @@ static void nf10_mdio_v1_00_a_a_3009146213_1516540902_p_3(char *t0)
 
 LAB0:    xsi_set_current_line(300, ng0);
 
-LAB3:    t1 = (t0 + 35408);
+LAB3:    t1 = (t0 + 35816);
     t3 = (t0 + 21432);
     t4 = (t3 + 56U);
     t5 = *((char **)t4);
@@ -199,7 +199,7 @@ static void nf10_mdio_v1_00_a_a_3009146213_1516540902_p_5(char *t0)
 
 LAB0:    xsi_set_current_line(304, ng0);
 
-LAB3:    t1 = (t0 + 35410);
+LAB3:    t1 = (t0 + 35818);
     t3 = (t0 + 21560);
     t4 = (t3 + 56U);
     t5 = *((char **)t4);
@@ -829,7 +829,7 @@ LAB0:    xsi_set_current_line(383, ng0);
 
 LAB3:    t1 = (t0 + 9616U);
     t2 = *((char **)t1);
-    t1 = (t0 + 35096U);
+    t1 = (t0 + 35504U);
     t3 = ieee_p_0017514958_sub_18359437307400844447_1861681735(IEEE_P_0017514958, t2, t1);
     t4 = (t0 + 22392);
     t5 = (t4 + 56U);
@@ -925,8 +925,8 @@ static void nf10_mdio_v1_00_a_a_3009146213_1516540902_p_19(char *t0)
 LAB0:    xsi_set_current_line(385, ng0);
     t1 = (t0 + 8336U);
     t2 = *((char **)t1);
-    t1 = (t0 + 35080U);
-    t3 = (t0 + 35412);
+    t1 = (t0 + 35488U);
+    t3 = (t0 + 35820);
     t6 = (t5 + 0U);
     t7 = (t6 + 0U);
     *((int *)t7) = 0;
@@ -1521,7 +1521,7 @@ LAB13:    t2 = (t0 + 9296U);
 LAB16:    xsi_set_current_line(455, ng0);
     t2 = (t0 + 7856U);
     t8 = *((char **)t2);
-    t2 = (t0 + 35032U);
+    t2 = (t0 + 35440U);
     t10 = ieee_p_3620187407_sub_2255506239096166994_3965413181(IEEE_P_3620187407, t19, t8, t2, 4);
     t13 = (t19 + 12U);
     t20 = *((unsigned int *)t13);
@@ -1571,7 +1571,7 @@ LAB25:    t2 = (t0 + 9136U);
 LAB28:    xsi_set_current_line(459, ng0);
     t2 = (t0 + 7856U);
     t8 = *((char **)t2);
-    t2 = (t0 + 35032U);
+    t2 = (t0 + 35440U);
     t10 = ieee_p_3620187407_sub_2255506239096166994_3965413181(IEEE_P_3620187407, t19, t8, t2, 4);
     t13 = (t19 + 12U);
     t20 = *((unsigned int *)t13);
@@ -2046,7 +2046,7 @@ LAB13:    t2 = (t0 + 9296U);
 LAB16:    xsi_set_current_line(521, ng0);
     t2 = (t0 + 8336U);
     t8 = *((char **)t2);
-    t2 = (t0 + 35080U);
+    t2 = (t0 + 35488U);
     t10 = ieee_p_3620187407_sub_16272557775307412169_3965413181(IEEE_P_3620187407, t19, t8, t2, (unsigned char)3);
     t13 = (t19 + 12U);
     t20 = *((unsigned int *)t13);

@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/contrib-projects/openflow_switch/hw/axi_simulation/simulation/behavioral/system_tb.v";
+static const char *ng0 = "/root/netfpga_10g_GET/contrib-projects/openflow_switch/hw/axi_simulation/simulation/behavioral/system_tb.v";
 static unsigned int ng1[] = {0U, 0U};
 static unsigned int ng2[] = {1U, 0U};
 static const char *ng3 = "[%t] : System Reset Asserted...";

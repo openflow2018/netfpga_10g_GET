@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/xilinx/pcores/microblaze_v8_00_b/hdl/vhdl/carry_equal.vhd";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/microblaze_v8_00_b/hdl/vhdl/carry_equal.vhd";
 extern char *IEEE_P_2592010699;
 
 unsigned char ieee_p_2592010699_sub_3488768496604610246_503743352(char *, unsigned char , unsigned char );
@@ -168,9 +168,9 @@ LAB0:    xsi_set_current_line(141, ng0);
     t2 = *((char **)t1);
     t3 = *((int *)t2);
     t4 = (t3 - 1);
-    t1 = (t0 + 14194);
+    t1 = (t0 + 14338);
     *((int *)t1) = t4;
-    t5 = (t0 + 14198);
+    t5 = (t0 + 14342);
     *((int *)t5) = 0;
     t6 = t4;
     t7 = 0;
@@ -206,7 +206,7 @@ LAB3:    xsi_set_current_line(143, ng0);
     t14 = *((char **)t8);
     t15 = *((int *)t14);
     t16 = (t13 * t15);
-    t8 = (t0 + 14194);
+    t8 = (t0 + 14338);
     t17 = *((int *)t8);
     t18 = (t16 + t17);
     t19 = (t18 - 0);
@@ -225,7 +225,7 @@ LAB3:    xsi_set_current_line(143, ng0);
     t29 = *((char **)t25);
     t30 = *((int *)t29);
     t31 = (t28 * t30);
-    t25 = (t0 + 14194);
+    t25 = (t0 + 14338);
     t32 = *((int *)t25);
     t33 = (t31 + t32);
     t34 = (t33 - 0);
@@ -242,16 +242,16 @@ LAB3:    xsi_set_current_line(143, ng0);
     t42 = (t43 + 0);
     *((unsigned char *)t42) = t41;
 
-LAB4:    t1 = (t0 + 14194);
+LAB4:    t1 = (t0 + 14338);
     t6 = *((int *)t1);
-    t2 = (t0 + 14198);
+    t2 = (t0 + 14342);
     t7 = *((int *)t2);
     if (t6 == t7)
         goto LAB5;
 
 LAB6:    t3 = (t6 + -1);
     t6 = t3;
-    t5 = (t0 + 14194);
+    t5 = (t0 + 14338);
     *((int *)t5) = t6;
     goto LAB2;
 
@@ -313,9 +313,9 @@ LAB0:    xsi_set_current_line(141, ng0);
     t2 = *((char **)t1);
     t3 = *((int *)t2);
     t4 = (t3 - 1);
-    t1 = (t0 + 14202);
+    t1 = (t0 + 14346);
     *((int *)t1) = t4;
-    t5 = (t0 + 14206);
+    t5 = (t0 + 14350);
     *((int *)t5) = 0;
     t6 = t4;
     t7 = 0;
@@ -351,7 +351,7 @@ LAB3:    xsi_set_current_line(143, ng0);
     t14 = *((char **)t8);
     t15 = *((int *)t14);
     t16 = (t13 * t15);
-    t8 = (t0 + 14202);
+    t8 = (t0 + 14346);
     t17 = *((int *)t8);
     t18 = (t16 + t17);
     t19 = (t18 - 0);
@@ -370,7 +370,7 @@ LAB3:    xsi_set_current_line(143, ng0);
     t29 = *((char **)t25);
     t30 = *((int *)t29);
     t31 = (t28 * t30);
-    t25 = (t0 + 14202);
+    t25 = (t0 + 14346);
     t32 = *((int *)t25);
     t33 = (t31 + t32);
     t34 = (t33 - 0);
@@ -387,16 +387,16 @@ LAB3:    xsi_set_current_line(143, ng0);
     t42 = (t43 + 0);
     *((unsigned char *)t42) = t41;
 
-LAB4:    t1 = (t0 + 14202);
+LAB4:    t1 = (t0 + 14346);
     t6 = *((int *)t1);
-    t2 = (t0 + 14206);
+    t2 = (t0 + 14350);
     t7 = *((int *)t2);
     if (t6 == t7)
         goto LAB5;
 
 LAB6:    t3 = (t6 + -1);
     t6 = t3;
-    t5 = (t0 + 14202);
+    t5 = (t0 + 14346);
     *((int *)t5) = t6;
     goto LAB2;
 
@@ -458,9 +458,9 @@ LAB0:    xsi_set_current_line(141, ng0);
     t2 = *((char **)t1);
     t3 = *((int *)t2);
     t4 = (t3 - 1);
-    t1 = (t0 + 14210);
+    t1 = (t0 + 14354);
     *((int *)t1) = t4;
-    t5 = (t0 + 14214);
+    t5 = (t0 + 14358);
     *((int *)t5) = 0;
     t6 = t4;
     t7 = 0;
@@ -496,7 +496,7 @@ LAB3:    xsi_set_current_line(143, ng0);
     t14 = *((char **)t8);
     t15 = *((int *)t14);
     t16 = (t13 * t15);
-    t8 = (t0 + 14210);
+    t8 = (t0 + 14354);
     t17 = *((int *)t8);
     t18 = (t16 + t17);
     t19 = (t18 - 0);
@@ -515,7 +515,7 @@ LAB3:    xsi_set_current_line(143, ng0);
     t29 = *((char **)t25);
     t30 = *((int *)t29);
     t31 = (t28 * t30);
-    t25 = (t0 + 14210);
+    t25 = (t0 + 14354);
     t32 = *((int *)t25);
     t33 = (t31 + t32);
     t34 = (t33 - 0);
@@ -532,16 +532,16 @@ LAB3:    xsi_set_current_line(143, ng0);
     t42 = (t43 + 0);
     *((unsigned char *)t42) = t41;
 
-LAB4:    t1 = (t0 + 14210);
+LAB4:    t1 = (t0 + 14354);
     t6 = *((int *)t1);
-    t2 = (t0 + 14214);
+    t2 = (t0 + 14358);
     t7 = *((int *)t2);
     if (t6 == t7)
         goto LAB5;
 
 LAB6:    t3 = (t6 + -1);
     t6 = t3;
-    t5 = (t0 + 14210);
+    t5 = (t0 + 14354);
     *((int *)t5) = t6;
     goto LAB2;
 

@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/std/pcores/nf10_mdio_v1_00_a/hdl/vhdl/mdio_if.vhd";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/std/pcores/nf10_mdio_v1_00_a/hdl/vhdl/mdio_if.vhd";
 extern char *IEEE_P_2592010699;
 
 unsigned char ieee_p_2592010699_sub_3488768496604610246_503743352(char *, unsigned char , unsigned char );
@@ -2747,7 +2747,7 @@ LAB0:    xsi_set_current_line(403, ng0);
     *((unsigned char *)t5) = (unsigned char)3;
     xsi_driver_first_trans_fast(t1);
     xsi_set_current_line(404, ng0);
-    t1 = (t0 + 35316);
+    t1 = (t0 + 35708);
     t3 = (t0 + 23608);
     t4 = (t3 + 56U);
     t5 = *((char **)t4);
@@ -2927,7 +2927,7 @@ LAB7:    xsi_set_current_line(447, ng0);
     xsi_set_current_line(448, ng0);
     t1 = (t0 + 6056U);
     t2 = *((char **)t1);
-    t1 = (t0 + 35332);
+    t1 = (t0 + 35724);
     t9 = 1;
     if (2U == 2U)
         goto LAB32;
@@ -2939,7 +2939,7 @@ LAB34:    if (t9 == 1)
 
 LAB30:    t6 = (t0 + 6056U);
     t7 = *((char **)t6);
-    t6 = (t0 + 35334);
+    t6 = (t0 + 35726);
     t13 = 1;
     if (2U == 2U)
         goto LAB38;
@@ -2989,7 +2989,7 @@ LAB8:    xsi_set_current_line(456, ng0);
     xsi_set_current_line(460, ng0);
     t1 = (t0 + 6056U);
     t2 = *((char **)t1);
-    t1 = (t0 + 35336);
+    t1 = (t0 + 35728);
     t9 = 1;
     if (2U == 2U)
         goto LAB50;
@@ -3001,7 +3001,7 @@ LAB52:    if (t9 == 1)
 
 LAB48:    t6 = (t0 + 6056U);
     t7 = *((char **)t6);
-    t6 = (t0 + 35338);
+    t6 = (t0 + 35730);
     t13 = 1;
     if (2U == 2U)
         goto LAB56;
@@ -3121,7 +3121,7 @@ LAB11:    xsi_set_current_line(488, ng0);
     xsi_set_current_line(492, ng0);
     t1 = (t0 + 6056U);
     t2 = *((char **)t1);
-    t1 = (t0 + 35340);
+    t1 = (t0 + 35732);
     t9 = 1;
     if (2U == 2U)
         goto LAB74;
@@ -3133,7 +3133,7 @@ LAB76:    if (t9 == 1)
 
 LAB72:    t6 = (t0 + 6056U);
     t7 = *((char **)t6);
-    t6 = (t0 + 35342);
+    t6 = (t0 + 35734);
     t13 = 1;
     if (2U == 2U)
         goto LAB80;
@@ -3183,7 +3183,7 @@ LAB12:    xsi_set_current_line(500, ng0);
     xsi_set_current_line(505, ng0);
     t1 = (t0 + 6056U);
     t2 = *((char **)t1);
-    t1 = (t0 + 35344);
+    t1 = (t0 + 35736);
     t9 = 1;
     if (2U == 2U)
         goto LAB92;
@@ -3195,7 +3195,7 @@ LAB94:    if (t9 == 1)
 
 LAB90:    t6 = (t0 + 6056U);
     t7 = *((char **)t6);
-    t6 = (t0 + 35346);
+    t6 = (t0 + 35738);
     t13 = 1;
     if (2U == 2U)
         goto LAB98;

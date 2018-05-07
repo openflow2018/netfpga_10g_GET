@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/root/netfpga_10g/lib/hw/xilinx/pcores/axi_uartlite_v1_01_a/hdl/vhdl/baudrate.vhd";
+static const char *ng0 = "/root/netfpga_10g_GET/lib/hw/xilinx/pcores/axi_uartlite_v1_01_a/hdl/vhdl/baudrate.vhd";
 
 
 

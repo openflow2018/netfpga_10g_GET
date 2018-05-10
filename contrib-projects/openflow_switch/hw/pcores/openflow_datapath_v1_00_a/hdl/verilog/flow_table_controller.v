@@ -56,7 +56,9 @@ module flow_tbl_ctrl
 
     parameter PKT_LEN_SIZE=16,
     // AXI Lite Data Width
-    parameter DATA_WIDTH=32
+    parameter DATA_WIDTH=32,
+
+    parameter GET_TABLE_WIDTH=10
 )
 (
    // AXI ports
@@ -127,7 +129,34 @@ module flow_tbl_ctrl
    output reg [DATA_WIDTH-1:0] exact_hit,
    output reg [DATA_WIDTH-1:0] exact_miss,
    output reg [DATA_WIDTH-1:0] wildcard_hit,
-   output reg [DATA_WIDTH-1:0] wildcard_miss
+   output reg [DATA_WIDTH-1:0] wildcard_miss,
+
+   // GET Filter
+   output p0_get_ack,
+   input p0_is_GET_pkt,
+   input p0_check_GET_done,
+   input [GET_TABLE_WIDTH-1:0] p0_get_tb_index,
+
+   output p1_get_ack,
+   input p1_is_GET_pkt,
+   input p1_check_GET_done,
+   input [GET_TABLE_WIDTH-1:0] p1_get_tb_index,
+
+   output p2_get_ack,
+   input p2_is_GET_pkt,
+   input p2_check_GET_done,
+   input [GET_TABLE_WIDTH-1:0] p2_get_tb_index,
+
+   output p3_get_ack,
+   input p3_is_GET_pkt,
+   input p3_check_GET_done,
+   input [GET_TABLE_WIDTH-1:0] p3_get_tb_index,
+
+   output p4_get_ack,
+   input p4_is_GET_pkt,
+   input p4_check_GET_done,
+   input [GET_TABLE_WIDTH-1:0] p4_get_tb_index
+
    );
 
    function integer log2;
@@ -242,6 +271,15 @@ module flow_tbl_ctrl
 
    integer i,j;
 
+   // GET Filter
+   reg [NUM_MAX_PORT-1:0] get_ack;
+   wire [NUM_MAX_PORT-1:0] is_GET_pkt;
+   wire [NUM_MAX_PORT-1:0] check_GET_done;
+   wire [GET_TABLE_WIDTH-1:0] get_tb_index [NUM_MAX_PORT-1:0];
+
+   reg is_GET_pkt_5th, is_GET_pkt_6th;
+   reg get_tb_index_5th, get_tb_index_6th; 
+
    //--------------------------- Logic -------------------------------
 
    assign req_int[0] = p0_req;
@@ -283,6 +321,34 @@ module flow_tbl_ctrl
    assign num_pkts_dropped_2 = num_pkts_dropped[2];
    assign num_pkts_dropped_3 = num_pkts_dropped[3];
    assign num_pkts_dropped_4 = num_pkts_dropped[4];
+
+   // GET Filter
+   assign p0_get_ack = get_ack[0];
+   assign p1_get_ack = get_ack[1];
+   assign p2_get_ack = get_ack[2];
+   assign p3_get_ack = get_ack[3];
+   assign p4_get_ack = get_ack[4];
+
+   assign is_GET_pkt[0] = p0_is_GET_pkt;
+   assign is_GET_pkt[1] = p1_is_GET_pkt;
+   assign is_GET_pkt[2] = p2_is_GET_pkt;
+   assign is_GET_pkt[3] = p3_is_GET_pkt;
+   assign is_GET_pkt[4] = p4_is_GET_pkt;
+   assign is_GET_pkt[5] = 0;
+
+   assign check_GET_done[0] = p0_check_GET_done;
+   assign check_GET_done[1] = p1_check_GET_done;
+   assign check_GET_done[2] = p2_check_GET_done;
+   assign check_GET_done[3] = p3_check_GET_done;
+   assign check_GET_done[4] = p4_check_GET_done;
+   assign check_GET_done[5] = 0;
+
+   assign get_tb_index[0] = p0_get_tb_index;
+   assign get_tb_index[1] = p1_get_tb_index;
+   assign get_tb_index[2] = p2_get_tb_index;
+   assign get_tb_index[3] = p3_get_tb_index;
+   assign get_tb_index[4] = p4_get_tb_index;
+   assign get_tb_index[5] = 0;
 
    // -------------------------------------------------------------
    // 1st stage (CLK-1)
@@ -669,7 +735,20 @@ module flow_tbl_ctrl
       end
    end
 
-
+   // GET Filter
+   always @(posedge asclk) begin
+      if (~aresetn) begin
+         get_ack <= 0;
+         is_GET_pkt_5th <= 0;
+         get_tb_index_5th <= 0;
+      end
+      if (check_GET_done[proc_port_4th] && ~(get_ack[proc_port_4th])) begin
+         get_ack <= (1<<proc_port_4th);
+         is_GET_pkt_5th <= is_GET_pkt[proc_port_4th];
+         get_tb_index_5th <= get_tb_index[proc_port_4th];
+      end
+   
+   end
    // -------------------------------------------------------------
    // 5th stage(CLK-5)
    // Check if we have a matching entry somewhere (step1)

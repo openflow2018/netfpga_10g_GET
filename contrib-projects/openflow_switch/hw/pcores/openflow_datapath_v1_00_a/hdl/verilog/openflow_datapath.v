@@ -59,7 +59,9 @@ module openflow_datapath
    parameter TBL_WIDTH=16,
    parameter OPENFLOW_MATCH_SIZE=256,
    parameter OPENFLOW_ACTION_SIZE=320,
-   parameter OPENFLOW_STATS_SIZE=64
+   parameter OPENFLOW_STATS_SIZE=64,
+
+   parameter GET_TABLE_WIDTH=10
 )
 (
    // Global Ports
@@ -229,6 +231,12 @@ module openflow_datapath
    wire [4:0] m_axis_tlast;
    wire [4:0] m_axis_tready;
 
+   // GET Filter
+   wire [4:0] get_ack;
+   wire [4:0] is_GET_pkt;
+   wire [4:0] check_GET_done;
+   wire [GET_TABLE_WIDTH-1:0] get_tb_index [4:0];
+
    //------------------------ Assigns -----------------------------
 
    assign s_axis_tdata[0] = s_axis_tdata_0;
@@ -339,7 +347,14 @@ module openflow_datapath
             .arp_parse_cnt(arp_parse_cnt[i]),
             .ip_tp_parse_cnt(ip_tp_parse_cnt[i]),
             //TODO To process below in this module
-            .pkt_buf_drop()
+            .pkt_buf_drop(),
+
+            // GET Filter
+            .get_ack(get_ack[i]),
+            .is_GET_pkt(is_GET_pkt[i]),
+            .check_GET_done(check_GET_done[i]),
+            .get_tb_index(get_tb_index[i])
+
             );
       end // block: pkt_preprocessor_group
    endgenerate
@@ -543,7 +558,34 @@ module openflow_datapath
       .wildcard_hit(wildcard_hit),
       .wildcard_miss(wildcard_miss),
 
-      .openflow_timer(openflow_timer)
+      .openflow_timer(openflow_timer),
+
+      //GET Filter
+      .p0_get_ack(get_ack[0]),
+      .p0_is_GET_pkt(is_GET_pkt[0]),
+      .p0_check_GET_done(check_GET_done[0]),
+      .p0_get_tb_index(get_tb_index[0]),
+
+      .p1_get_ack(get_ack[1]),
+      .p1_is_GET_pkt(is_GET_pkt[1]),
+      .p1_check_GET_done(check_GET_done[1]),
+      .p1_get_tb_index(get_tb_index[1]),
+
+      .p2_get_ack(get_ack[2]),
+      .p2_is_GET_pkt(is_GET_pkt[2]),
+      .p2_check_GET_done(check_GET_done[2]),
+      .p2_get_tb_index(get_tb_index[2]),
+
+      .p3_get_ack(get_ack[3]),
+      .p3_is_GET_pkt(is_GET_pkt[3]),
+      .p3_check_GET_done(check_GET_done[3]),
+      .p3_get_tb_index(get_tb_index[3]),
+
+      .p4_get_ack(get_ack[4]),
+      .p4_is_GET_pkt(is_GET_pkt[4]),
+      .p4_check_GET_done(check_GET_done[4]),
+      .p4_get_tb_index(get_tb_index[4]),
+
    );
 
 endmodule

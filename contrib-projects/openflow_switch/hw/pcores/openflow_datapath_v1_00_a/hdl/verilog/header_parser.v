@@ -110,7 +110,9 @@ module header_parser
    output reg [31:0] ip_tp_parse_cnt,
 
    // GET Filter
-   // input 
+   input get_ack,
+   output reg is_GET_pkt,
+   output reg check_GET_done,
    output [GET_TABLE_WIDTH-1:0] get_tb_index
 );
 
@@ -224,10 +226,10 @@ module header_parser
    reg [NUM_IP_TP_STATES-1:0] ip_state, ip_state_nxt;
 
    // GET packet filter
-   reg is_GET_pkt, is_GET_pkt_nxt;
+   reg is_GET_pkt_nxt;
    reg get_f_start, get_f_start_nxt;
    reg [NUM_GET_FILTER_STATE-1:0] get_state, get_state_nxt;
-   reg check_GET_done, check_GET_done_nxt;
+   reg check_GET_done_nxt;
 
    //--------------------------- Logic -------------------------------
 
@@ -873,11 +875,11 @@ module header_parser
             check_GET_done_nxt = 1;
          end
          GET_WAIT_ACK: begin
-            // if () begin
+            if (get_ack) begin
                check_GET_done_nxt = 0;
                is_GET_pkt_nxt = 0;
                get_state_nxt = GET_FILTER_START;
-            // end          
+            end          
          end
 
       endcase

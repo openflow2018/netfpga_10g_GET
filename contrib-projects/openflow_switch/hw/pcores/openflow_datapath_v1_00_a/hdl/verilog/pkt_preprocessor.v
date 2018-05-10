@@ -54,7 +54,8 @@ module pkt_preprocessor
    parameter OPENFLOW_MATCH_SIZE=256,
    parameter MPLS_ENABLE=0, //1:ENABLED 0:DISABLED(OF1.0)
    // Register size
-   parameter DATA_WIDTH=32
+   parameter DATA_WIDTH=32,
+   parameter GET_TABLE_WIDTH=10
 )
 (
    // Global Ports
@@ -90,7 +91,13 @@ module pkt_preprocessor
    output [DATA_WIDTH-1:0] ip_tp_parse_cnt,
 
    //TODO To process below in this module
-   output pkt_buf_drop
+   output pkt_buf_drop,
+
+   // GET Filter
+   input get_ack,
+   output is_GET_pkt,
+   output check_GET_done,
+   output [GET_TABLE_WIDTH-1:0] get_tb_index
 );
 
    //-------------------- Internal Parameters ------------------------
@@ -333,7 +340,13 @@ module pkt_preprocessor
         .ip_tp_parse_cnt (ip_tp_parse_cnt),
 
         .aresetn (aresetn),
-        .asclk (asclk)
+        .asclk (asclk),
+
+        // GET Filter
+        .get_ack(get_ack),
+        .is_GET_pkt(is_GET_pkt),
+        .check_GET_done(check_GET_done),
+        .get_tb_index(get_tb_index)
         );
 
    //--- lu_entry_composer

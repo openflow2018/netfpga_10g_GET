@@ -938,6 +938,9 @@ module flow_tbl_ctrl
          done_int <= 0;
       end
       else begin
+
+         //action_out <= 0;
+         ///*
          if (use_ex_7th) begin // exact match hits
             action_out <= ex_action_7th;
          end
@@ -947,6 +950,7 @@ module flow_tbl_ctrl
          else begin // nothing hits
             action_out <= 0;
          end
+         //*/
          if (proc_port_7th < REQ_FROM_HOST) begin
             done_int <= 1<<proc_port_7th;
          end

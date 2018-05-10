@@ -11,7 +11,7 @@ nw_src = "CCCCCCCC"
 nw_dst = "DDDDDDDD"
 nw_proto = "06"
 tp_src = "CB1C"
-tp_dst = "CB1C"
+tp_dst = "0050"
 
 """ Values for Mask Fields """
 mask_dl_vlantag = "0000"

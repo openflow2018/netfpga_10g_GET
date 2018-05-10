@@ -278,7 +278,7 @@ module flow_tbl_ctrl
    wire [GET_TABLE_WIDTH-1:0] get_tb_index [NUM_MAX_PORT-1:0];
 
    reg is_GET_pkt_5th, is_GET_pkt_6th;
-   reg get_tb_index_5th, get_tb_index_6th; 
+   reg [GET_TABLE_WIDTH-1:0] get_tb_index_5th, get_tb_index_6th; 
 
    //--------------------------- Logic -------------------------------
 

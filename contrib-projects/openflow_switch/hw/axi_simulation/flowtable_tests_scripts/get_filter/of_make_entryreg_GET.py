@@ -44,7 +44,7 @@ stats_word0 = "01234567"
 stats_word1 = "89abcdef"
 
 """ Entry Address """
-entry_addr = "00000355"
+entry_addr = "0000017e"
 
 """ Write Order Address """
 wr_order_addr = "7a01001f"

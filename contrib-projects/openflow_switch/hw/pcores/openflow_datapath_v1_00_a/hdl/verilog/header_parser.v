@@ -111,7 +111,7 @@ module header_parser
 
    // GET Filter
    // input 
-   output reg [GET_TABLE_WIDTH-1:0] get_tb_index
+   output [GET_TABLE_WIDTH-1:0] get_tb_index
 );
 
    //-------------------- Internal Parameters ------------------------
@@ -887,11 +887,10 @@ module header_parser
      #(.INPUT_WIDTH   (GET_HASH_SIZE_IN),
        .OUTPUT_WIDTH  (GET_TABLE_WIDTH))
        header_hash
-         (.data (ip_src, ip_dst),
+         (.data ({ip_src, ip_dst}),
           .hash_0 (get_tb_index),
           .hash_1 (),
           .clk (asclk),
           .reset (~aresetn));
-
 
 endmodule

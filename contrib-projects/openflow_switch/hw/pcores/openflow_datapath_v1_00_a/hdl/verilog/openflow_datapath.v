@@ -584,7 +584,7 @@ module openflow_datapath
       .p4_get_ack(get_ack[4]),
       .p4_is_GET_pkt(is_GET_pkt[4]),
       .p4_check_GET_done(check_GET_done[4]),
-      .p4_get_tb_index(get_tb_index[4]),
+      .p4_get_tb_index(get_tb_index[4])
 
    );
 

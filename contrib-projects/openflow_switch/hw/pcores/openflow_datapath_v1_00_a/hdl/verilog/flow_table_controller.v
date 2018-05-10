@@ -303,7 +303,7 @@ module flow_tbl_ctrl
       end
    end
 
-   assign pri_pre0 = rr_cntr;
+   assign pri_pre0 = rr_cntr;        // 0 1 2 3 4 5
    assign pri_pre1 = (rr_cntr<5) ? rr_cntr+1 : rr_cntr-5;
    assign pri_pre2 = (rr_cntr<4) ? rr_cntr+2 : rr_cntr-4;
    assign pri_pre3 = (rr_cntr<3) ? rr_cntr+3 : rr_cntr-3;
@@ -330,7 +330,7 @@ module flow_tbl_ctrl
    end
 
    // Processing port selector
-   always @(posedge asclk) begin
+   always @(posedge asclk) begin                                  // >> axisim: proc_port_2nd
       if (~aresetn) begin
          ack_int <= 0;
          proc_port_2nd <= REQ_NONE;
@@ -338,7 +338,7 @@ module flow_tbl_ctrl
       else begin
          if (req_int[pri0] && ~(ack_int[pri0])) begin
             ack_int <= (1<<pri0);
-            proc_port_2nd <= pri0;
+            proc_port_2nd <= pri0;                        
          end
          else if (req_int[pri1] && ~(ack_int[pri1])) begin
             ack_int <= (1<<pri1);
@@ -582,6 +582,7 @@ module flow_tbl_ctrl
    .douta (ex_entry0_5th),
    .wea (host_ex_wr_4th),
    .rsta (~aresetn),
+
    .clkb (asclk),
    .addrb (ex_addr1),
    .dinb (256'b0),
@@ -599,6 +600,7 @@ module flow_tbl_ctrl
    .douta ({dummy_64b_0, ex_action0_5th}),
    .wea (host_ex_wr_4th),
    .rsta (~aresetn),
+
    .clkb (asclk),
    .addrb (ex_addr1),
    .dinb (384'b0),
@@ -793,6 +795,11 @@ module flow_tbl_ctrl
          use_wc_7th <= 0;
       end
       else begin
+         // // GET-drop
+         // if (count > THRESHOLD) begin
+         //    use_ex_7th <= 0;
+         //    use_wc_7th <= 0;
+         // end
          if ((proc_port_6th != REQ_NONE) &&
              (proc_port_6th != REQ_FROM_HOST) &&
              (&(ex_entry0_match) ||
@@ -974,6 +981,7 @@ module flow_tbl_ctrl
    .douta (),
    .wea (ex_we_9th), // also used by host
    .rsta (~aresetn),
+
    .clkb (asclk),
    .addrb (ex_addr_7th),  // clk7
    .dinb (64'b0),
@@ -1003,6 +1011,7 @@ module flow_tbl_ctrl
          host_ex_stats_wr_8th <= host_ex_stats_wr_7th;
       end
    end
+
    always @(posedge asclk) begin
       if (~aresetn) begin
          ex_addr_9th <= 0;
@@ -1043,19 +1052,19 @@ module flow_tbl_ctrl
    // wildcard match
    dp_bram_32x64 wc_stats_bram
    (
-   //side-a: clk9, side-b: clk7
-   .clka (asclk),
-   .addra (wc_addr_9th[LUT_DEPTH_BITS-1:0]), // also used by host
-   .dina (wc_update_stats), // also used by host
-   .douta (),
-   .wea (wc_we_9th),
-   .rsta (~aresetn),
-   .clkb (asclk),
-   .addrb (wc_addr_7th[LUT_DEPTH_BITS-1:0]),
-   .dinb (64'b0),
-   .doutb (wc_current_stats),
-   .web (1'b0),
-   .rstb (~aresetn)
+      //side-a: clk9, side-b: clk7
+      .clka (asclk),
+      .addra (wc_addr_9th[LUT_DEPTH_BITS-1:0]), // also used by host
+      .dina (wc_update_stats), // also used by host
+      .douta (),
+      .wea (wc_we_9th),
+      .rsta (~aresetn),
+      .clkb (asclk),
+      .addrb (wc_addr_7th[LUT_DEPTH_BITS-1:0]),
+      .dinb (64'b0),
+      .doutb (wc_current_stats),
+      .web (1'b0),
+      .rstb (~aresetn)
    );
 
    always @(posedge asclk) begin

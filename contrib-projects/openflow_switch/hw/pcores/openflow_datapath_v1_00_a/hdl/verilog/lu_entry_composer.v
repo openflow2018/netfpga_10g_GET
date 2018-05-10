@@ -103,10 +103,10 @@ module lu_entry_composer
    localparam LU_WAIT_INT_REQ = 1,
               LU_WAIT_ACK = 2;
 
-   localparam ENTRY_DL = 4'b1 << 0,
-              ENTRY_MPLS = 4'b1 << 1,
-              ENTRY_ARP = 4'b1 << 2,
-              ENTRY_IP_TP = 4'b1 << 3;
+   localparam ENTRY_DL = 4'b1 << 0, // 0001
+              ENTRY_MPLS = 4'b1 << 1, // 0010
+              ENTRY_ARP = 4'b1 << 2, // 0100
+              ENTRY_IP_TP = 4'b1 << 3; // 1000
 
    //------------------------ Wires/Regs -----------------------------
 

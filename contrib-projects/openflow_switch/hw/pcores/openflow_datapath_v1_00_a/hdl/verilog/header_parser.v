@@ -51,7 +51,10 @@ module header_parser
    // AXI Stream Data Width
    parameter C_AXIS_DATA_WIDTH=64,
    parameter C_AXIS_LEN_DATA_WIDTH=16,
-   parameter C_AXIS_SPT_DATA_WIDTH=8
+   parameter C_AXIS_SPT_DATA_WIDTH=8,
+
+   parameter GET_HASH_SIZE_IN = 64,
+   parameter GET_TABLE_WIDTH = 10
 )
 (
    // Global Ports
@@ -104,7 +107,11 @@ module header_parser
    output reg [31:0] dl_parse_cnt,
    output reg [31:0] mpls_parse_cnt,
    output reg [31:0] arp_parse_cnt,
-   output reg [31:0] ip_tp_parse_cnt
+   output reg [31:0] ip_tp_parse_cnt,
+
+   // GET Filter
+   // input 
+   output reg [GET_TABLE_WIDTH-1:0] get_tb_index
 );
 
    //-------------------- Internal Parameters ------------------------
@@ -149,10 +156,11 @@ module header_parser
               IP_TP_WAIT_DONE = 16;
 
    // GET Filter state machine
-   localparam NUM_GET_FILTER_STATE = 3;
+   localparam NUM_GET_FILTER_STATE = 4;
    localparam GET_FILTER_START = 1,
               GET_FILTER_WORD_8 = 2,
-              GET_FILTER_WORD_9 = 4;
+              GET_FILTER_WORD_9 = 4,
+              GET_WAIT_ACK = 8;
    //------------------------ Wires/Regs -----------------------------
 
    // Endian Conversion
@@ -219,7 +227,7 @@ module header_parser
    reg is_GET_pkt, is_GET_pkt_nxt;
    reg get_f_start, get_f_start_nxt;
    reg [NUM_GET_FILTER_STATE-1:0] get_state, get_state_nxt;
-
+   reg check_GET_done, check_GET_done_nxt;
 
    //--------------------------- Logic -------------------------------
 
@@ -827,23 +835,27 @@ module header_parser
    always @(posedge asclk) begin
       if (~aresetn) begin
          is_GET_pkt <= 0;
+         check_GET_done <= 0;
          get_state <= GET_FILTER_START;     
       end
       else begin
          is_GET_pkt <= is_GET_pkt_nxt;
+         check_GET_done <= check_GET_done_nxt;
          get_state <= get_state_nxt;
       end
    end
 
    always @(*) begin
       get_state_nxt = get_state; 
-      is_GET_pkt_nxt = 0;   
+      is_GET_pkt_nxt = is_GET_pkt;   
+      check_GET_done_nxt = check_GET_done;
       case (get_state)
          GET_FILTER_START: begin
             if (get_f_start) begin
                if (be_tx_data [15:0] == "GE") begin
                   is_GET_pkt_nxt = 1;
-                  get_state_nxt = GET_FILTER_START;
+                  check_GET_done_nxt = 1;
+                  get_state_nxt = GET_WAIT_ACK;
                end
                else begin
                   get_state_nxt = GET_FILTER_WORD_8;
@@ -857,9 +869,29 @@ module header_parser
             if (be_tx_data [47:24] == "GET") begin
                is_GET_pkt_nxt = 1;
             end
-            get_state_nxt = GET_FILTER_START;
+            get_state_nxt = GET_WAIT_ACK;
+            check_GET_done_nxt = 1;
          end
+         GET_WAIT_ACK: begin
+            // if () begin
+               check_GET_done_nxt = 0;
+               is_GET_pkt_nxt = 0;
+               get_state_nxt = GET_FILTER_START;
+            // end          
+         end
+
       endcase
    end
+
+   header_hash
+     #(.INPUT_WIDTH   (GET_HASH_SIZE_IN),
+       .OUTPUT_WIDTH  (GET_TABLE_WIDTH))
+       header_hash
+         (.data (ip_src, ip_dst),
+          .hash_0 (get_tb_index),
+          .hash_1 (),
+          .clk (asclk),
+          .reset (~aresetn));
+
 
 endmodule

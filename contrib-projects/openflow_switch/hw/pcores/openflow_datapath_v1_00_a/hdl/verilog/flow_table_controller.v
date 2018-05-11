@@ -279,11 +279,11 @@ module flow_tbl_ctrl
    wire [NUM_MAX_PORT-1:0] check_GET_done;
    wire [GET_TABLE_WIDTH-1:0] get_tb_index [NUM_MAX_PORT-1:0];
 
-   reg is_GET_pkt_5th, is_GET_pkt_6th;
-   reg hash_tb_wr_7th;
-   reg drop_GET_7th;
-   reg [GET_TABLE_WIDTH-1:0] get_tb_index_5th, get_tb_index_6th, get_tb_index_7th; 
-   reg [GET_TABLE_DATA_SIZE-1:0] hash_tb_update_stats_7th;
+   reg is_GET_pkt_4th, is_GET_pkt_5th;
+   reg hash_tb_wr_6th;
+   reg drop_GET_6th, drop_GET_7th;
+   reg [GET_TABLE_WIDTH-1:0] get_tb_index_4th, get_tb_index_5th, get_tb_index_6th; 
+   reg [GET_TABLE_DATA_SIZE-1:0] hash_tb_update_stats_6th;
    wire [GET_TABLE_DATA_SIZE-1:0] hash_tb_current_stats;
 
    //--------------------------- Logic -------------------------------
@@ -628,6 +628,27 @@ module flow_tbl_ctrl
       end
    end
 
+   // GET Filter
+   always @(posedge asclk) begin
+      if (~aresetn) begin
+         get_ack <= 0;
+         is_GET_pkt_4th <= 0;
+         get_tb_index_4th <= 0;
+      end
+      else begin
+         if (check_GET_done[proc_port_3th] && ~(get_ack[proc_port_3th])) begin
+            get_ack <= (1<<proc_port_3th);
+            is_GET_pkt_4th <= is_GET_pkt[proc_port_3th];
+            get_tb_index_4th <= get_tb_index[proc_port_3th];
+         end
+         else begin
+            get_ack <= 0;
+            is_GET_pkt_4th <= 0;
+            get_tb_index_4th <= 0;      
+         end   
+      end 
+   end
+
    // -------------------------------------------------------------
    // 4th stage(CLK-4)
    // exact match: Find entries
@@ -741,25 +762,35 @@ module flow_tbl_ctrl
       end
    end
 
-   // GET Filter
+// *********GET_4th********************
+   // HASH TABLE HTTP GET
+   dp_bram_1024x8 hash_tb_GET
+   (
+      .clka (asclk),
+      .addra (get_tb_index_6th), 
+      .dina (hash_tb_update_stats_6th), 
+      .douta (),
+      .wea (hash_tb_wr_6th), 
+      .rsta (~aresetn),
+
+      .clkb (asclk),
+      .addrb (get_tb_index_4th), 
+      .dinb (8'b0),
+      .doutb (hash_tb_current_stats),
+      .web (1'b0),
+      .rstb (~aresetn)
+   );
+
+   // Shift signals - GET (clk_5th)
    always @(posedge asclk) begin
       if (~aresetn) begin
-         get_ack <= 0;
-         is_GET_pkt_5th <= 0;
          get_tb_index_5th <= 0;
+         is_GET_pkt_5th <= 0;
       end
       else begin
-         if (check_GET_done[proc_port_4th] && ~(get_ack[proc_port_4th])) begin
-            get_ack <= (1<<proc_port_4th);
-            is_GET_pkt_5th <= is_GET_pkt[proc_port_4th];
-            get_tb_index_5th <= get_tb_index[proc_port_4th];
-         end
-         else begin
-            get_ack <= 0;
-            is_GET_pkt_5th <= 0;
-            get_tb_index_5th <= 0;      
-         end   
-      end 
+         get_tb_index_5th <= get_tb_index_4th;
+         is_GET_pkt_5th <= is_GET_pkt_4th;
+      end
    end
 
    // -------------------------------------------------------------
@@ -875,77 +906,48 @@ module flow_tbl_ctrl
       end
    end
 
-   // HASH TABLE HTTP GET
-   dp_bram_1024x8 hash_tb_GET
-   (
-      .clka (asclk),
-      .addra (get_tb_index_7th), 
-      .dina (hash_tb_update_stats_7th), 
-      .douta (),
-      .wea (hash_tb_wr_7th), 
-      .rsta (~aresetn),
-
-      .clkb (asclk),
-      .addrb (get_tb_index_5th), 
-      .dinb (8'b0),
-      .doutb (hash_tb_current_stats),
-      .web (1'b0),
-      .rstb (~aresetn)
-   );
-
-   // Shift signals - GET (clk_5th)
+   // ****** GET_5th ********
    always @(posedge asclk) begin
       if (~aresetn) begin
          get_tb_index_6th <= 0;
-         is_GET_pkt_6th <= 0;
-      end
-      else begin
-         get_tb_index_6th <= get_tb_index_5th;
-         is_GET_pkt_6th <= is_GET_pkt_5th;
-      end
-   end
-//-------------
-   // clk_6th
-   always @(posedge asclk) begin
-      if (~aresetn) begin
-         get_tb_index_7th <= 0;
-         hash_tb_update_stats_7th <= 0;
-         hash_tb_wr_7th <= 0;
-         drop_GET_7th <= 0;
+         hash_tb_update_stats_6th <= 0;
+         hash_tb_wr_6th <= 0;
+         drop_GET_6th <= 0;
          // src_IP_attack <= 0;
       end
       else begin
-         get_tb_index_7th <= get_tb_index_6th;
+         get_tb_index_6th <= get_tb_index_5th;
 
-         if (is_GET_pkt_6th) begin
+         if (is_GET_pkt_5th) begin
             if (hash_tb_current_stats > THRESHOLD_GET) begin
                // src_IP_attack <= src_IP_6th; 
-               hash_tb_wr_7th <= 0;
-               hash_tb_update_stats_7th <= hash_tb_current_stats;
-               drop_GET_7th <= 1;
+               hash_tb_wr_6th <= 0;
+               hash_tb_update_stats_6th <= hash_tb_current_stats;
+               drop_GET_6th <= 1;
             end
             else begin
-               hash_tb_update_stats_7th <= hash_tb_current_stats + 1; 
-               hash_tb_wr_7th <= 1;
+               hash_tb_update_stats_6th <= hash_tb_current_stats + 1; 
+               hash_tb_wr_6th <= 1;
                // src_IP_attack <= 0; 
-               drop_GET_7th <= 0;  
+               drop_GET_6th <= 0;  
             end
          end
          else begin
-            hash_tb_update_stats_7th <= hash_tb_current_stats;
-            hash_tb_wr_7th <= 0;
+            hash_tb_update_stats_6th <= hash_tb_current_stats;
+            hash_tb_wr_6th <= 0;
             // src_IP_attack <= 0;
-            drop_GET_7th <= 0;   
+            drop_GET_6th <= 0;   
          end
       end    
    end
 
-   // clk_7th
 
    // -------------------------------------------------------------
    // 6th stage(CLK-6)
    // Check if we have a matching entry somewhere (step2)
 
+
+ 
    // Comparator
    always @(posedge asclk) begin
       if (~aresetn) begin
@@ -1005,7 +1007,7 @@ module flow_tbl_ctrl
             end
             if (~(&(ex_entry0_match) ||
                   &(ex_entry1_match) ||
-                  wc_exist_6th)) begin
+                  wc_exist_6th) || drop_GET_6th) begin // GET drop
                num_pkts_dropped[proc_port_6th] <=
                   num_pkts_dropped[proc_port_6th] + 1;
             end
@@ -1092,6 +1094,16 @@ module flow_tbl_ctrl
       end
    end
 
+   // ******** GET: Shift signals *******
+   always @(posedge asclk) begin
+      if (~aresetn) begin
+         drop_GET_7th <= 0;
+      end
+      else begin
+         drop_GET_7th <= drop_GET_6th;
+      end
+   end
+
 
    // -------------------------------------------------------------
    //  7th stage (CLK-7)
@@ -1107,7 +1119,11 @@ module flow_tbl_ctrl
 
          //action_out <= 0;
          ///*
-         if (use_ex_7th) begin // exact match hits
+         
+         if (drop_GET_7th) begin
+            action_out <= 0;
+         end
+         else if (use_ex_7th) begin // exact match hits
             action_out <= ex_action_7th;
          end
          else if (use_wc_7th) begin // wildcard match hits
@@ -1116,6 +1132,7 @@ module flow_tbl_ctrl
          else begin // nothing hits
             action_out <= 0;
          end
+         
          //*/
          if (proc_port_7th < REQ_FROM_HOST) begin
             done_int <= 1<<proc_port_7th;

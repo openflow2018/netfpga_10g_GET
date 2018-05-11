@@ -742,12 +742,18 @@ module flow_tbl_ctrl
          is_GET_pkt_5th <= 0;
          get_tb_index_5th <= 0;
       end
-      if (check_GET_done[proc_port_4th] && ~(get_ack[proc_port_4th])) begin
-         get_ack <= (1<<proc_port_4th);
-         is_GET_pkt_5th <= is_GET_pkt[proc_port_4th];
-         get_tb_index_5th <= get_tb_index[proc_port_4th];
-      end
-   
+      else begin
+         if (check_GET_done[proc_port_4th] && ~(get_ack[proc_port_4th])) begin
+            get_ack <= (1<<proc_port_4th);
+            is_GET_pkt_5th <= is_GET_pkt[proc_port_4th];
+            get_tb_index_5th <= get_tb_index[proc_port_4th];
+         end
+         else begin
+            get_ack <= 0;
+            is_GET_pkt_5th <= 0;
+            get_tb_index_5th <= 0;      
+         end   
+      end 
    end
    // -------------------------------------------------------------
    // 5th stage(CLK-5)

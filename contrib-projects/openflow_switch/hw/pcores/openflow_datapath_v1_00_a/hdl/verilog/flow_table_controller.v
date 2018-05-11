@@ -898,7 +898,6 @@ module flow_tbl_ctrl
       if (~aresetn) begin
          get_tb_index_6th <= 0;
          is_GET_pkt_6th <= 0;
-         hash_tb_in
       end
       else begin
          get_tb_index_6th <= get_tb_index_5th;

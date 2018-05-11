@@ -285,7 +285,7 @@ module flow_tbl_ctrl
    reg [GET_TABLE_WIDTH-1:0] get_tb_index_5th, get_tb_index_6th, get_tb_index_7th; 
    reg [GET_TABLE_DATA_SIZE-1:0] hash_tb_update_stats_7th;
    wire [GET_TABLE_DATA_SIZE-1:0] hash_tb_current_stats;
-       
+
    //--------------------------- Logic -------------------------------
 
    assign req_int[0] = p0_req;
@@ -898,7 +898,6 @@ module flow_tbl_ctrl
       if (~aresetn) begin
          get_tb_index_6th <= 0;
          is_GET_pkt_6th <= 0;
-         hash_tb_in
       end
       else begin
          get_tb_index_6th <= get_tb_index_5th;

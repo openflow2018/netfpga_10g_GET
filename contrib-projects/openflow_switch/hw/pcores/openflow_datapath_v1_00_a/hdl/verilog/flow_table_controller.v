@@ -59,8 +59,8 @@ module flow_tbl_ctrl
     parameter DATA_WIDTH=32,
 
     parameter GET_TABLE_WIDTH=10,
-    parameter GET_TABLE_DATA_SIZE=16,
-    parameter THRESHOLD_GET = 8
+    parameter GET_TABLE_DATA_SIZE=8,
+    parameter THRESHOLD_GET = 5
 )
 (
    // AXI ports
@@ -876,7 +876,7 @@ module flow_tbl_ctrl
    end
 
    // HASH TABLE HTTP GET
-   dp_bram_1024x16 hash_tb_GET
+   dp_bram_1024x8 hash_tb_GET
    (
       .clka (asclk),
       .addra (get_tb_index_7th), 
@@ -887,7 +887,7 @@ module flow_tbl_ctrl
 
       .clkb (asclk),
       .addrb (get_tb_index_5th), 
-      .dinb (16'b0),
+      .dinb (8'b0),
       .doutb (hash_tb_current_stats),
       .web (1'b0),
       .rstb (~aresetn)

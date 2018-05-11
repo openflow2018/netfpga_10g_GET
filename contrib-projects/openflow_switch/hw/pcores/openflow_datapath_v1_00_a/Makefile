@@ -38,7 +38,18 @@
 
 COREGEN_DIR:= coregen
 
-install: hdl/verilog/dp_bram_1024x256.v hdl/verilog/dp_bram_1024x64.v hdl/verilog/dp_bram_32x64.v hdl/verilog/dp_bram_1024x384.v hdl/verilog/dp_bram_32x384.v
+install: hdl/verilog/dp_bram_1024x8.v hdl/verilog/dp_bram_1024x256.v hdl/verilog/dp_bram_1024x64.v hdl/verilog/dp_bram_32x64.v hdl/verilog/dp_bram_1024x384.v hdl/verilog/dp_bram_32x384.v
+
+hdl/verilog/dp_bram_1024x8.v: xco/dp_bram_1024x8.xco
+	@mkdir -p netlist;
+	@mkdir -p $(COREGEN_DIR);
+	@cd $(COREGEN_DIR) &&	coregen -b ../xco/dp_bram_1024x8.xco
+	@cp $(COREGEN_DIR)/dp_bram_1024x8.v hdl/verilog
+	@cp $(COREGEN_DIR)/dp_bram_1024x8.ngc netlist/
+	@echo "/////////////////////////////////////////////";
+	@echo "//Xilinx Dual Port Bram (1024x8) installed.";
+	@echo "/////////////////////////////////////////////";
+	@rm -rf $(COREGEN_DIR);
 
 hdl/verilog/dp_bram_1024x256.v: xco/dp_bram_1024x256.xco
 	@mkdir -p netlist;

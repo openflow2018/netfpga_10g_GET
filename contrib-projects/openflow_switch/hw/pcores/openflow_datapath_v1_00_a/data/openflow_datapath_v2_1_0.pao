@@ -58,4 +58,5 @@ lib openflow_datapath_v1_00_a dp_bram_1024x384.v verilog
 lib openflow_datapath_v1_00_a dp_bram_32x384.v verilog
 lib openflow_datapath_v1_00_a dp_bram_1024x64.v verilog
 lib openflow_datapath_v1_00_a dp_bram_32x64.v verilog
+lib openflow_datapath_v1_00_a dp_bram_1024x8.v verilog
 lib openflow_datapath_v1_00_a cam.v verilog

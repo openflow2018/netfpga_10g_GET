@@ -58,7 +58,9 @@ module flow_tbl_ctrl
     // AXI Lite Data Width
     parameter DATA_WIDTH=32,
 
-    parameter GET_TABLE_WIDTH=10
+    parameter GET_TABLE_WIDTH=10,
+    parameter GET_TABLE_DATA_SIZE=16,
+    parameter THRESHOLD_GET = 8
 )
 (
    // AXI ports
@@ -278,8 +280,12 @@ module flow_tbl_ctrl
    wire [GET_TABLE_WIDTH-1:0] get_tb_index [NUM_MAX_PORT-1:0];
 
    reg is_GET_pkt_5th, is_GET_pkt_6th;
-   reg [GET_TABLE_WIDTH-1:0] get_tb_index_5th, get_tb_index_6th; 
-
+   reg hash_tb_wr_7th;
+   reg drop_GET_7th;
+   reg [GET_TABLE_WIDTH-1:0] get_tb_index_5th, get_tb_index_6th, get_tb_index_7th; 
+   reg [GET_TABLE_DATA_SIZE-1:0] hash_tb_update_stats_7th;
+   wire [GET_TABLE_DATA_SIZE-1:0] hash_tb_current_stats;
+       
    //--------------------------- Logic -------------------------------
 
    assign req_int[0] = p0_req;
@@ -755,6 +761,7 @@ module flow_tbl_ctrl
          end   
       end 
    end
+
    // -------------------------------------------------------------
    // 5th stage(CLK-5)
    // Check if we have a matching entry somewhere (step1)
@@ -868,6 +875,73 @@ module flow_tbl_ctrl
       end
    end
 
+   // HASH TABLE HTTP GET
+   dp_bram_1024x16 hash_tb_GET
+   (
+      .clka (asclk),
+      .addra (get_tb_index_7th), 
+      .dina (hash_tb_update_stats_7th), 
+      .douta (),
+      .wea (hash_tb_wr_7th), 
+      .rsta (~aresetn),
+
+      .clkb (asclk),
+      .addrb (get_tb_index_5th), 
+      .dinb (16'b0),
+      .doutb (hash_tb_current_stats),
+      .web (1'b0),
+      .rstb (~aresetn)
+   );
+
+   // Shift signals - GET (clk_5th)
+   always @(posedge asclk) begin
+      if (~aresetn) begin
+         get_tb_index_6th <= 0;
+         is_GET_pkt_6th <= 0;
+         hash_tb_in
+      end
+      else begin
+         get_tb_index_6th <= get_tb_index_5th;
+         is_GET_pkt_6th <= is_GET_pkt_5th;
+      end
+   end
+//-------------
+   // clk_6th
+   always @(posedge asclk) begin
+      if (~aresetn) begin
+         get_tb_index_7th <= 0;
+         hash_tb_update_stats_7th <= 0;
+         hash_tb_wr_7th <= 0;
+         drop_GET_7th <= 0;
+         // src_IP_attack <= 0;
+      end
+      else begin
+         get_tb_index_7th <= get_tb_index_6th;
+
+         if (is_GET_pkt_6th) begin
+            if (hash_tb_current_stats > THRESHOLD_GET) begin
+               // src_IP_attack <= src_IP_6th; 
+               hash_tb_wr_7th <= 0;
+               hash_tb_update_stats_7th <= hash_tb_current_stats;
+               drop_GET_7th <= 1;
+            end
+            else begin
+               hash_tb_update_stats_7th <= hash_tb_current_stats + 1; 
+               hash_tb_wr_7th <= 1;
+               // src_IP_attack <= 0; 
+               drop_GET_7th <= 0;  
+            end
+         end
+         else begin
+            hash_tb_update_stats_7th <= hash_tb_current_stats;
+            hash_tb_wr_7th <= 0;
+            // src_IP_attack <= 0;
+            drop_GET_7th <= 0;   
+         end
+      end    
+   end
+
+   // clk_7th
 
    // -------------------------------------------------------------
    // 6th stage(CLK-6)
@@ -975,6 +1049,7 @@ module flow_tbl_ctrl
    .douta ({dummy_64b_2, wc_action_7th}),
    .wea (host_wc_wr_6th),
    .rsta (~aresetn),
+
    .clkb (asclk),
    .addrb (5'b0),
    .dinb (384'b0),

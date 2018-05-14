@@ -138,26 +138,32 @@ module flow_tbl_ctrl
    input p0_is_GET_pkt,
    input p0_check_GET_done,
    input [GET_TABLE_WIDTH-1:0] p0_get_tb_index,
+   input [31:0] p0_src_ip_GET,
 
    output p1_get_ack,
    input p1_is_GET_pkt,
    input p1_check_GET_done,
    input [GET_TABLE_WIDTH-1:0] p1_get_tb_index,
+   input [31:0] p1_src_ip_GET,
 
    output p2_get_ack,
    input p2_is_GET_pkt,
    input p2_check_GET_done,
    input [GET_TABLE_WIDTH-1:0] p2_get_tb_index,
+   input [31:0] p2_src_ip_GET,
 
    output p3_get_ack,
    input p3_is_GET_pkt,
    input p3_check_GET_done,
    input [GET_TABLE_WIDTH-1:0] p3_get_tb_index,
+   input [31:0] p3_src_ip_GET,
 
    output p4_get_ack,
    input p4_is_GET_pkt,
    input p4_check_GET_done,
-   input [GET_TABLE_WIDTH-1:0] p4_get_tb_index
+   input [GET_TABLE_WIDTH-1:0] p4_get_tb_index,
+   input [31:0] p4_src_ip_GET,
+   output reg [31:0] src_IP_attack
 
    );
 
@@ -278,13 +284,16 @@ module flow_tbl_ctrl
    wire [NUM_MAX_PORT-1:0] is_GET_pkt;
    wire [NUM_MAX_PORT-1:0] check_GET_done;
    wire [GET_TABLE_WIDTH-1:0] get_tb_index [NUM_MAX_PORT-1:0];
+   wire [31:0] src_ip_GET [NUM_MAX_PORT-1:0];
 
    reg is_GET_pkt_4th, is_GET_pkt_5th;
    reg hash_tb_wr_6th;
    reg drop_GET_6th, drop_GET_7th;
    reg [GET_TABLE_WIDTH-1:0] get_tb_index_4th, get_tb_index_5th, get_tb_index_6th; 
+   reg [31:0] src_ip_GET_4th, src_ip_GET_5th;
    reg [GET_TABLE_DATA_SIZE-1:0] hash_tb_update_stats_6th;
    wire [GET_TABLE_DATA_SIZE-1:0] hash_tb_current_stats;
+
 
    //--------------------------- Logic -------------------------------
 
@@ -355,6 +364,13 @@ module flow_tbl_ctrl
    assign get_tb_index[3] = p3_get_tb_index;
    assign get_tb_index[4] = p4_get_tb_index;
    assign get_tb_index[5] = 0;
+
+   assign src_ip_GET[0] = p0_src_ip_GET;
+   assign src_ip_GET[1] = p1_src_ip_GET;
+   assign src_ip_GET[2] = p2_src_ip_GET;
+   assign src_ip_GET[3] = p3_src_ip_GET;
+   assign src_ip_GET[4] = p4_src_ip_GET;
+   assign src_ip_GET[5] = 0;
 
    // -------------------------------------------------------------
    // 1st stage (CLK-1)
@@ -634,17 +650,20 @@ module flow_tbl_ctrl
          get_ack <= 0;
          is_GET_pkt_4th <= 0;
          get_tb_index_4th <= 0;
+         src_ip_GET_4th <= 0
       end
       else begin
          if (check_GET_done[proc_port_3th] && ~(get_ack[proc_port_3th])) begin
             get_ack <= (1<<proc_port_3th);
             is_GET_pkt_4th <= is_GET_pkt[proc_port_3th];
             get_tb_index_4th <= get_tb_index[proc_port_3th];
+            src_ip_GET_4th <= src_ip_GET[proc_port_3rd];
          end
          else begin
             get_ack <= 0;
             is_GET_pkt_4th <= 0;
-            get_tb_index_4th <= 0;      
+            get_tb_index_4th <= 0;  
+            src_ip_GET_4th <= 0;    
          end   
       end 
    end
@@ -786,10 +805,12 @@ module flow_tbl_ctrl
       if (~aresetn) begin
          get_tb_index_5th <= 0;
          is_GET_pkt_5th <= 0;
+         src_ip_GET_5th <= 0;
       end
       else begin
          get_tb_index_5th <= get_tb_index_4th;
          is_GET_pkt_5th <= is_GET_pkt_4th;
+         src_ip_GET_5th <= src_ip_GET_4th;
       end
    end
 
@@ -913,14 +934,14 @@ module flow_tbl_ctrl
          hash_tb_update_stats_6th <= 0;
          hash_tb_wr_6th <= 0;
          drop_GET_6th <= 0;
-         // src_IP_attack <= 0;
+         src_IP_attack <= 0;
       end
       else begin
          get_tb_index_6th <= get_tb_index_5th;
-
+         src_IP_attack <= 0;
          if (is_GET_pkt_5th) begin
             if (hash_tb_current_stats > THRESHOLD_GET) begin
-               // src_IP_attack <= src_IP_6th; 
+               src_IP_attack <= src_ip_GET_5th;
                hash_tb_wr_6th <= 0;
                hash_tb_update_stats_6th <= hash_tb_current_stats;
                drop_GET_6th <= 1;
@@ -928,14 +949,14 @@ module flow_tbl_ctrl
             else begin
                hash_tb_update_stats_6th <= hash_tb_current_stats + 1; 
                hash_tb_wr_6th <= 1;
-               // src_IP_attack <= 0; 
+               src_IP_attack <= 0; 
                drop_GET_6th <= 0;  
             end
          end
          else begin
             hash_tb_update_stats_6th <= hash_tb_current_stats;
             hash_tb_wr_6th <= 0;
-            // src_IP_attack <= 0;
+            src_IP_attack <= 0;
             drop_GET_6th <= 0;   
          end
       end    

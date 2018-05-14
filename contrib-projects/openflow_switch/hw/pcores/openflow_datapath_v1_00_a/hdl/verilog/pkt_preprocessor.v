@@ -97,7 +97,8 @@ module pkt_preprocessor
    input get_ack,
    output is_GET_pkt,
    output check_GET_done,
-   output [GET_TABLE_WIDTH-1:0] get_tb_index
+   output [GET_TABLE_WIDTH-1:0] get_tb_index,
+   output [31:0] src_ip_GET
 );
 
    //-------------------- Internal Parameters ------------------------
@@ -346,7 +347,8 @@ module pkt_preprocessor
         .get_ack(get_ack),
         .is_GET_pkt(is_GET_pkt),
         .check_GET_done(check_GET_done),
-        .get_tb_index(get_tb_index)
+        .get_tb_index(get_tb_index),
+        .src_ip_GET(src_ip_GET)
         );
 
    //--- lu_entry_composer

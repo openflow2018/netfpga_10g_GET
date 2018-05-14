@@ -236,6 +236,7 @@ module openflow_datapath
    wire [4:0] is_GET_pkt;
    wire [4:0] check_GET_done;
    wire [GET_TABLE_WIDTH-1:0] get_tb_index [4:0];
+   wire [31:0] src_ip_GET [4:0];
 
    //------------------------ Assigns -----------------------------
 
@@ -353,7 +354,8 @@ module openflow_datapath
             .get_ack(get_ack[i]),
             .is_GET_pkt(is_GET_pkt[i]),
             .check_GET_done(check_GET_done[i]),
-            .get_tb_index(get_tb_index[i])
+            .get_tb_index(get_tb_index[i]),
+            .src_ip_GET(src_ip_GET[i])
 
             );
       end // block: pkt_preprocessor_group
@@ -565,26 +567,31 @@ module openflow_datapath
       .p0_is_GET_pkt(is_GET_pkt[0]),
       .p0_check_GET_done(check_GET_done[0]),
       .p0_get_tb_index(get_tb_index[0]),
+      .p0_src_ip_GET(src_ip_GET[0]),
 
       .p1_get_ack(get_ack[1]),
       .p1_is_GET_pkt(is_GET_pkt[1]),
       .p1_check_GET_done(check_GET_done[1]),
       .p1_get_tb_index(get_tb_index[1]),
+      .p1_src_ip_GET(src_ip_GET[1]),
 
       .p2_get_ack(get_ack[2]),
       .p2_is_GET_pkt(is_GET_pkt[2]),
       .p2_check_GET_done(check_GET_done[2]),
       .p2_get_tb_index(get_tb_index[2]),
+      .p2_src_ip_GET(src_ip_GET[2]),
 
       .p3_get_ack(get_ack[3]),
       .p3_is_GET_pkt(is_GET_pkt[3]),
       .p3_check_GET_done(check_GET_done[3]),
       .p3_get_tb_index(get_tb_index[3]),
+      .p3_src_ip_GET(src_ip_GET[3]),
 
       .p4_get_ack(get_ack[4]),
       .p4_is_GET_pkt(is_GET_pkt[4]),
       .p4_check_GET_done(check_GET_done[4]),
       .p4_get_tb_index(get_tb_index[4])
+      .p4_src_ip_GET(src_ip_GET[4]),
 
    );
 

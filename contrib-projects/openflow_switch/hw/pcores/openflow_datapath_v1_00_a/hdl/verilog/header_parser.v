@@ -113,7 +113,8 @@ module header_parser
    input get_ack,
    output reg is_GET_pkt,
    output reg check_GET_done,
-   output [GET_TABLE_WIDTH-1:0] get_tb_index
+   output [GET_TABLE_WIDTH-1:0] get_tb_index,
+   output reg [31:0] src_ip_GET
 );
 
    //-------------------- Internal Parameters ------------------------
@@ -230,6 +231,7 @@ module header_parser
    reg get_f_start, get_f_start_nxt;
    reg [NUM_GET_FILTER_STATE-1:0] get_state, get_state_nxt;
    reg check_GET_done_nxt;
+   wire [31:0] src_ip_GET_nxt;
 
    //--------------------------- Logic -------------------------------
 
@@ -838,19 +840,24 @@ module header_parser
       if (~aresetn) begin
          is_GET_pkt <= 0;
          check_GET_done <= 0;
-         get_state <= GET_FILTER_START;     
+         get_state <= GET_FILTER_START;    
+         src_ip_GET <= 0; 
       end
       else begin
          is_GET_pkt <= is_GET_pkt_nxt;
          check_GET_done <= check_GET_done_nxt;
          get_state <= get_state_nxt;
+         src_ip_GET <= src_ip_GET_nxt;
       end
    end
 
    always @(*) begin
+      
       get_state_nxt = get_state; 
       is_GET_pkt_nxt = is_GET_pkt;   
       check_GET_done_nxt = check_GET_done;
+      src_ip_GET_nxt = src_ip_GET;
+
       case (get_state)
          GET_FILTER_START: begin
             if (get_f_start) begin
@@ -858,6 +865,7 @@ module header_parser
                   is_GET_pkt_nxt = 1;
                   check_GET_done_nxt = 1;
                   get_state_nxt = GET_WAIT_ACK;
+                  src_ip_GET_nxt = ip_src;
                end
                else begin
                   get_state_nxt = GET_FILTER_WORD_8;
@@ -870,6 +878,7 @@ module header_parser
          GET_FILTER_WORD_9: begin
             if (be_tx_data [47:24] == "GET") begin
                is_GET_pkt_nxt = 1;
+               src_ip_GET_nxt = ip_src;
             end
             get_state_nxt = GET_WAIT_ACK;
             check_GET_done_nxt = 1;
@@ -879,6 +888,7 @@ module header_parser
                check_GET_done_nxt = 0;
                is_GET_pkt_nxt = 0;
                get_state_nxt = GET_FILTER_START;
+               src_ip_GET_nxt = 0;
             end          
          end
 

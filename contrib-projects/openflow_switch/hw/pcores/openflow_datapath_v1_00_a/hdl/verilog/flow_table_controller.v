@@ -163,7 +163,7 @@ module flow_tbl_ctrl
    input p4_check_GET_done,
    input [GET_TABLE_WIDTH-1:0] p4_get_tb_index,
    input [31:0] p4_src_ip_GET,
-   output reg [31:0] src_IP_attack
+   output reg [31:0] src_ip_attack
 
    );
 
@@ -653,19 +653,11 @@ module flow_tbl_ctrl
          src_ip_GET_4th <= 0
       end
       else begin
-<<<<<<< HEAD
          if (check_GET_done[proc_port_3th] && ~(get_ack[proc_port_3th])) begin
             get_ack <= (1<<proc_port_3th);
             is_GET_pkt_4th <= is_GET_pkt[proc_port_3th];
             get_tb_index_4th <= get_tb_index[proc_port_3th];
             src_ip_GET_4th <= src_ip_GET[proc_port_3rd];
-=======
-         if (check_GET_done[proc_port_3rd] && ~(get_ack[proc_port_3rd])) begin
-            get_ack <= (1<<proc_port_3rd);
-            is_GET_pkt_4th <= is_GET_pkt[proc_port_3rd];
-            get_tb_index_4th <= get_tb_index[proc_port_3rd];
->>>>>>> 81f60ec59c6231bd62c210ea3a213ebbdcb571f3
-         end
          else begin
             get_ack <= 0;
             is_GET_pkt_4th <= 0;
@@ -941,14 +933,14 @@ module flow_tbl_ctrl
          hash_tb_update_stats_6th <= 0;
          hash_tb_wr_6th <= 0;
          drop_GET_6th <= 0;
-         src_IP_attack <= 0;
+         src_ip_attack <= 0;
       end
       else begin
          get_tb_index_6th <= get_tb_index_5th;
-         src_IP_attack <= 0;
+         // src_ip_attack <= 0;
          if (is_GET_pkt_5th) begin
             if (hash_tb_current_stats > THRESHOLD_GET) begin
-               src_IP_attack <= src_ip_GET_5th;
+               src_ip_attack <= src_ip_GET_5th;
                hash_tb_wr_6th <= 0;
                hash_tb_update_stats_6th <= hash_tb_current_stats;
                drop_GET_6th <= 1;
@@ -956,14 +948,14 @@ module flow_tbl_ctrl
             else begin
                hash_tb_update_stats_6th <= hash_tb_current_stats + 1; 
                hash_tb_wr_6th <= 1;
-               src_IP_attack <= 0; 
+               // src_ip_attack <= 0; 
                drop_GET_6th <= 0;  
             end
          end
          else begin
             hash_tb_update_stats_6th <= hash_tb_current_stats;
             hash_tb_wr_6th <= 0;
-            src_IP_attack <= 0;
+            // src_ip_attack <= 0;
             drop_GET_6th <= 0;   
          end
       end    

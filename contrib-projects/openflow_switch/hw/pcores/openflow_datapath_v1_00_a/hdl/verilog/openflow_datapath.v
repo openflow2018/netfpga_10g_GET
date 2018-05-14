@@ -237,6 +237,7 @@ module openflow_datapath
    wire [4:0] check_GET_done;
    wire [GET_TABLE_WIDTH-1:0] get_tb_index [4:0];
    wire [31:0] src_ip_GET [4:0];
+   wire [31:0] src_ip_attack;
 
    //------------------------ Assigns -----------------------------
 
@@ -481,7 +482,9 @@ module openflow_datapath
       .ip_tp_parse_cnt_1(ip_tp_parse_cnt[1]),
       .ip_tp_parse_cnt_2(ip_tp_parse_cnt[2]),
       .ip_tp_parse_cnt_3(ip_tp_parse_cnt[3]),
-      .ip_tp_parse_cnt_4(ip_tp_parse_cnt[4])
+      .ip_tp_parse_cnt_4(ip_tp_parse_cnt[4]),
+
+      .src_ip_attack(src_ip_attack)
    );
 
    s_counter #(
@@ -592,6 +595,8 @@ module openflow_datapath
       .p4_check_GET_done(check_GET_done[4]),
       .p4_get_tb_index(get_tb_index[4])
       .p4_src_ip_GET(src_ip_GET[4]),
+
+      .src_ip_attack(src_ip_attack)
 
    );
 

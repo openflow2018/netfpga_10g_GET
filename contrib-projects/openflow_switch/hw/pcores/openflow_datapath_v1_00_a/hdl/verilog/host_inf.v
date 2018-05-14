@@ -1015,6 +1015,7 @@ module host_inf
                 default: begin
                     rdata = 32'hCAFE_XXXX;
                 end
+              endcase
             end         
             //-------------------------
             else begin

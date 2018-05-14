@@ -650,14 +650,15 @@ module flow_tbl_ctrl
          get_ack <= 0;
          is_GET_pkt_4th <= 0;
          get_tb_index_4th <= 0;
-         src_ip_GET_4th <= 0
+         src_ip_GET_4th <= 0;
       end
       else begin
-         if (check_GET_done[proc_port_3th] && ~(get_ack[proc_port_3th])) begin
-            get_ack <= (1<<proc_port_3th);
-            is_GET_pkt_4th <= is_GET_pkt[proc_port_3th];
-            get_tb_index_4th <= get_tb_index[proc_port_3th];
+         if (check_GET_done[proc_port_3rd] && ~(get_ack[proc_port_3rd])) begin
+            get_ack <= (1<<proc_port_3rd);
+            is_GET_pkt_4th <= is_GET_pkt[proc_port_3rd];
+            get_tb_index_4th <= get_tb_index[proc_port_3rd];
             src_ip_GET_4th <= src_ip_GET[proc_port_3rd];
+         end
          else begin
             get_ack <= 0;
             is_GET_pkt_4th <= 0;

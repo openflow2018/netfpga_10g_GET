@@ -231,7 +231,7 @@ module header_parser
    reg get_f_start, get_f_start_nxt;
    reg [NUM_GET_FILTER_STATE-1:0] get_state, get_state_nxt;
    reg check_GET_done_nxt;
-   wire [31:0] src_ip_GET_nxt;
+   reg [31:0] src_ip_GET_nxt;
 
    //--------------------------- Logic -------------------------------
 

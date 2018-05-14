@@ -593,7 +593,7 @@ module openflow_datapath
       .p4_get_ack(get_ack[4]),
       .p4_is_GET_pkt(is_GET_pkt[4]),
       .p4_check_GET_done(check_GET_done[4]),
-      .p4_get_tb_index(get_tb_index[4])
+      .p4_get_tb_index(get_tb_index[4]),
       .p4_src_ip_GET(src_ip_GET[4]),
 
       .src_ip_attack(src_ip_attack)

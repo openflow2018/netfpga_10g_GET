@@ -38,6 +38,6 @@
 
 
 all:
-	gcc -march=core2 -o nic_regs nic_regs.c
+	gcc -march=core2 -o of_switch of_switch.c
 clean:
-	rm nic_regs
+	rm of_switch

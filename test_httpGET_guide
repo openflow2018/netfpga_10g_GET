@@ -1,3 +1,9 @@
+1. Download bitfile
+	contrib-projects/openflow_switch/download_GET_read_attacker_IP.bit
+	
+2. Read Attacker's IP Address
+>>   cd contrib-projects/openflow_switch/sw/host
+
 - THRESHOLD_GET = 5 (flow_table_controller.v)
 - register: ATTACKER_IP
-- contrib-projects/openflow_switch/sw/host
+- xem lai file of_switch.c giup anh nhe.

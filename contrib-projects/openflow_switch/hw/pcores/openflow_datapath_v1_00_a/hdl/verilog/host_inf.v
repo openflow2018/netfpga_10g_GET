@@ -159,8 +159,27 @@ module host_inf
    input [C_S_AXI_DATA_WIDTH-1:0] wildcard_miss,
 
    // HTTP GET Floods
-   input [31:0] src_ip_attack
+   input [31:0] src_ip_attack,
 
+   // inter-arrival time flow
+   input [31:0] num_suitable_f_iat,
+   input [31:0] num_total_f_iat,
+
+   // inter-arrival time packet
+   input [31:0] num_suitable_p_iat,
+   input [31:0] num_total_p_iat,
+
+   // dns response
+   input [31:0] num_suitable_dns_response,
+   input [31:0] num_total_dns_response,
+
+   // total packet length
+   input [31:0] total_pkt_len,
+   input [31:0] cnt_pkt,
+
+   // flow 1 pkt
+   input [31:0] num_flow_1pkt_1s,
+   input [31:0] num_flow_1s
 );
 
    //-------------------- Internal Parameters ------------------------
@@ -269,7 +288,7 @@ module host_inf
    reg [C_S_AXI_DATA_WIDTH-1:0] exact_miss_int, exact_miss_int_d1;
    reg [C_S_AXI_DATA_WIDTH-1:0] wildcard_hit_int, wildcard_hit_int_d1;
    reg [C_S_AXI_DATA_WIDTH-1:0] wildcard_miss_int, wildcard_miss_int_d1;
-   reg [31:0] src_ip_attack_int, src_ip_attack_int_d1;
+   // reg [31:0] src_ip_attack_int, src_ip_attack_int_d1;
 
 //   reg [OPENFLOW_MATCH_SIZE-1:0] flow_entry_match_in_int;
 //   reg [OPENFLOW_ACTION_SIZE-1:0] flow_entry_action_in_int;
@@ -781,8 +800,8 @@ module host_inf
          ip_tp_parse_cnt_4_int_d1 <= 0;
 
          // GET
-         src_ip_attack_int <= 0;
-         src_ip_attack_int_d1 <= 0;
+         // src_ip_attack_int <= 0;
+         // src_ip_attack_int_d1 <= 0;
       end
       else begin
          num_pkts_dropped_0_int_d1 <= num_pkts_dropped_0;
@@ -845,8 +864,8 @@ module host_inf
          ip_tp_parse_cnt_4_int <= ip_tp_parse_cnt_4_int_d1;
 
          // GET
-         src_ip_attack_int_d1 <= src_ip_attack;
-         src_ip_attack_int <= src_ip_attack_int_d1;
+         // src_ip_attack_int_d1 <= src_ip_attack;
+         // src_ip_attack_int <= src_ip_attack_int_d1;
       end
    end
 
@@ -998,26 +1017,59 @@ module host_inf
                rdata = entry_buf_in_int;
             end
             //-- GET
-            else if (rd_addr < 8'h50) begin
-              case (rd_addr)
-                `ATTACKER_IP: begin
-                    rdata = src_ip_attack_int;
-                end
-                `EXTRA_REG_1: begin
-                    rdata = 32'hCAFE_1111;
-                end
-                `EXTRA_REG_2: begin
-                    rdata = 32'hCAFE_2222;
-                end
-                `EXTRA_REG_3: begin
-                    rdata = 32'hCAFE_3333;
-                end
-                default: begin
-                    rdata = 32'hCAFE_XXXX;
-                end
-              endcase
-            end         
+            // else if (rd_addr <= 8'h41) begin
+            //   case (rd_addr)
+            //     `ATTACKER_IP: begin
+            //         rdata = src_ip_attack_int;
+            //     end
+            //     `EXTRA_REG_1: begin
+            //         rdata = 32'hCAFE_1111;
+            //     end
+            //     `EXTRA_REG_2: begin
+            //         rdata = 32'hCAFE_2222;
+            //     end
+            //     `EXTRA_REG_3: begin
+            //         rdata = 32'hCAFE_3333;
+            //     end
+            //     default: begin
+            //         rdata = 32'hCAFE_XXXX;
+            //     end
+            //   endcase
+            // end         
             //-------------------------
+            else if (rd_addr == `ATTACKER_IP) begin
+              rdata = src_ip_attack;
+            end
+            else if (rd_addr == `NUM_SUITABLE_F_IAT_REG) begin
+              rdata = num_suitable_f_iat;
+            end
+            else if (rd_addr == `NUM_TOTAL_F_IAT_REG) begin
+              rdata = num_total_f_iat;
+            end
+            else if (rd_addr == `NUM_SUITABLE_P_IAT_REG) begin
+              rdata = num_suitable_p_iat;
+            end
+            else if (rd_addr == `NUM_TOTAL_P_IAT_REG) begin
+              rdata = num_total_p_iat;
+            end
+            else if (rd_addr == `SUITABLE_DNS_RESPONSE_REG) begin
+              rdata = num_suitable_dns_response;
+            end
+            else if (rd_addr == `TOTAL_DNS_RESPONSE_REG) begin
+              rdata = num_total_dns_response;
+            end
+            else if (rd_addr == `TOTAL_PKT_LEN_REG) begin
+              rdata = total_pkt_len;
+            end
+            else if (rd_addr == `CNT_PKT_REG) begin
+              rdata = cnt_pkt;
+            end
+            else if (rd_addr == `NUM_FLOW_1_PKT) begin
+              rdata = num_flow_1pkt_1s;
+            end
+            else if (rd_addr == `NUM_FLOW) begin
+              rdata = num_flow_1s;
+            end
             else begin
                rdata = 32'hBEEF_CAFE;
             end

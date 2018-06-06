@@ -163,7 +163,27 @@ module flow_tbl_ctrl
    input p4_check_GET_done,
    input [GET_TABLE_WIDTH-1:0] p4_get_tb_index,
    input [31:0] p4_src_ip_GET,
-   output reg [31:0] src_ip_attack
+   output reg [31:0] src_ip_attack,
+
+   // inter-arrival time flow
+   output [31:0] num_suitable_f_iat,
+   output [31:0] num_total_f_iat,
+
+   // inter-arrival time packet
+   output [31:0] num_suitable_p_iat,
+   output [31:0] num_total_p_iat,
+
+   // dns response
+   output [31:0] num_suitable_dns_response,
+   output [31:0] num_total_dns_response,
+
+   // total packet length
+   output [31:0] total_pkt_len,
+   output [31:0] cnt_pkt,
+
+   // flow 1 pkt
+   output [31:0] num_flow_1pkt_1s,
+   output [31:0] num_flow_1s
 
    );
 
@@ -294,6 +314,9 @@ module flow_tbl_ctrl
    reg [GET_TABLE_DATA_SIZE-1:0] hash_tb_update_stats_6th;
    wire [GET_TABLE_DATA_SIZE-1:0] hash_tb_current_stats;
 
+   // cnt for new features
+   reg [27:0] cnt_time;
+
 
    //--------------------------- Logic -------------------------------
 
@@ -375,6 +398,19 @@ module flow_tbl_ctrl
    // -------------------------------------------------------------
    // 1st stage (CLK-1)
    // Select one requested_port per clk in a round robin fashion
+
+   // counter controller
+   always @(posedge asclk) begin
+      if (~aresetn) begin
+         cnt_time <= 0;
+      end
+      else begin
+         cnt_time <= cnt_time + 1;
+         if (cnt_time == 28'd160000000) begin   // 1 second
+            cnt_time <= 0;
+         end
+      end
+   end
 
    // Counter
    always @(posedge asclk) begin
@@ -577,6 +613,39 @@ module flow_tbl_ctrl
    //  hash an entry and get two addresses
    // wildcard match:
    //  Input entry to CAM and get unencoded hit row
+
+   // total packet length
+   f_6_7 f_6_7 (
+      .asclk(asclk),
+      .aresetn(aresetn),
+      .cnt_time(cnt_time),
+      .proc_port_3rd(proc_port_3rd),
+      .stats_3rd(stats_3rd),
+      .total_pkt_len(total_pkt_len),
+      .cnt_pkt(cnt_pkt)
+   );
+
+   // inter-arrival time packet
+   f_2 f_2 (
+      .asclk(asclk),
+      .aresetn(aresetn),
+      .cnt_time(cnt_time),
+      .proc_port_3rd(proc_port_3rd),
+      .num_suitable_p_iat(num_suitable_p_iat),
+      .num_total_p_iat(num_total_p_iat)
+   );
+
+   // dns response
+   f_4_5 f_4_5 (
+      .asclk(asclk),
+      .aresetn(aresetn),
+      .cnt_time(cnt_time),
+      .proc_port_3rd(proc_port_3rd),
+      .stats_3rd(stats_3rd),
+      .tp_source(match_3rd[31:16]),
+      .num_suitable_dns_response(num_suitable_dns_response),
+      .num_total_dns_response(num_total_dns_response)
+   );
 
    // exact match
    header_hash
@@ -1129,6 +1198,32 @@ module flow_tbl_ctrl
    // -------------------------------------------------------------
    //  7th stage (CLK-7)
    //  Select actions from EX and WC, then send it out
+
+   f_1 f_1 (
+      .asclk(asclk),
+      .aresetn(aresetn),
+      .cnt_time(cnt_time),
+      .proc_port_7th(proc_port_7th),
+      .use_ex_7th(use_ex_7th),
+      .num_suitable_f_iat(num_suitable_f_iat),
+      .num_total_f_iat(num_total_f_iat)
+   );
+
+   f_3 #(
+      .DEPTH_WIDTH(EX_ENTRY_WIDTH),
+      .TIMESTAMP_WIDTH(40),
+      .CNT_PKT_WIDTH(2),
+      .NUM_FLOW_WIDTH(32)
+   ) f_3
+   (
+      .asclk(asclk),
+      .aresetn(aresetn),
+      .cnt_time(cnt_time),
+      .proc_port(proc_port_7th),
+      .addr_hash(ex_addr_7th),
+      .num_flow_1pkt_1s(num_flow_1pkt_1s),
+      .num_flow_1s(num_flow_1s)
+   );
 
    // Action selecter
    always @(posedge asclk) begin

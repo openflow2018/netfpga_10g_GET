@@ -183,3 +183,15 @@
 `define EXTRA_REG_1 8'h3f
 `define EXTRA_REG_2 8'h40
 `define EXTRA_REG_3 8'h41
+
+// extra features
+`define NUM_SUITABLE_F_IAT_REG        8'h42
+`define NUM_TOTAL_F_IAT_REG           8'h43
+`define NUM_SUITABLE_P_IAT_REG        8'h44
+`define NUM_TOTAL_P_IAT_REG           8'h45
+`define SUITABLE_DNS_RESPONSE_REG     8'h46
+`define TOTAL_DNS_RESPONSE_REG        8'h47
+`define TOTAL_PKT_LEN_REG             8'h48
+`define CNT_PKT_REG                   8'h49
+`define NUM_FLOW_1_PKT                8'h4a
+`define NUM_FLOW                      8'h4b

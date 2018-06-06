@@ -34,4 +34,4 @@
 #
 
 FILES
-dp_bram_1024x256.ngc, dp_bram_1024x64.ngc, dp_bram_32x64.ngc, dp_bram_1024x384.ngc, dp_bram_32x384.ngc, cam.ngc, dp_bram_1024x8.ngc
+dp_bram_1024x256.ngc, dp_bram_1024x64.ngc, dp_bram_32x64.ngc, dp_bram_1024x384.ngc, dp_bram_32x384.ngc, cam.ngc, dp_bram_1024x8.ngc, dp_bram_1024x42.ngc

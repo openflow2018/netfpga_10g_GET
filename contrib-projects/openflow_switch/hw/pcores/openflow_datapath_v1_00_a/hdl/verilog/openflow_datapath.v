@@ -239,6 +239,26 @@ module openflow_datapath
    wire [31:0] src_ip_GET [4:0];
    wire [31:0] src_ip_attack;
 
+   // inter-arrival time flow
+   wire [31:0] num_suitable_f_iat;
+   wire [31:0] num_total_f_iat;
+
+   // inter-arrival time packet
+   wire [31:0] num_suitable_p_iat;
+   wire [31:0] num_total_p_iat;
+
+   // dns response
+   wire [31:0] num_suitable_dns_response;
+   wire [31:0] num_total_dns_response;
+
+   // total packet length
+   wire [31:0] total_pkt_len;
+   wire [31:0] cnt_pkt;
+
+   // flow 1 pkt
+   wire [31:0] num_flow_1pkt_1s;
+   wire [31:0] num_flow_1s;
+
    //------------------------ Assigns -----------------------------
 
    assign s_axis_tdata[0] = s_axis_tdata_0;
@@ -484,7 +504,18 @@ module openflow_datapath
       .ip_tp_parse_cnt_3(ip_tp_parse_cnt[3]),
       .ip_tp_parse_cnt_4(ip_tp_parse_cnt[4]),
 
-      .src_ip_attack(src_ip_attack)
+      .src_ip_attack(src_ip_attack),
+
+      .num_suitable_f_iat(num_suitable_f_iat),
+      .num_total_f_iat(num_total_f_iat),
+      .num_suitable_p_iat(num_suitable_p_iat),
+      .num_total_p_iat(num_total_p_iat),
+      .num_suitable_dns_response(num_suitable_dns_response),
+      .num_total_dns_response(num_total_dns_response),
+      .total_pkt_len(total_pkt_len),
+      .cnt_pkt(cnt_pkt),
+      .num_flow_1pkt_1s(num_flow_1pkt_1s),
+      .num_flow_1s(num_flow_1s)
    );
 
    s_counter #(
@@ -596,7 +627,18 @@ module openflow_datapath
       .p4_get_tb_index(get_tb_index[4]),
       .p4_src_ip_GET(src_ip_GET[4]),
 
-      .src_ip_attack(src_ip_attack)
+      .src_ip_attack(src_ip_attack),
+
+      .num_suitable_f_iat(num_suitable_f_iat),
+      .num_total_f_iat(num_total_f_iat),
+      .num_suitable_p_iat(num_suitable_p_iat),
+      .num_total_p_iat(num_total_p_iat),
+      .num_suitable_dns_response(num_suitable_dns_response),
+      .num_total_dns_response(num_total_dns_response),
+      .total_pkt_len(total_pkt_len),
+      .cnt_pkt(cnt_pkt),
+      .num_flow_1pkt_1s(num_flow_1pkt_1s),
+      .num_flow_1s(num_flow_1s)
 
    );
 
